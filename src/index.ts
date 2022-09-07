@@ -1,4 +1,4 @@
-import '@abraham/reflection';
+import 'reflect-metadata';
 import { autoInjectable } from 'tsyringe';
 import { use } from 'typescript-mix';
 import { Activations } from './lib/parts/activations/activations';
