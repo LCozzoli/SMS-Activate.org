@@ -1,0 +1,25 @@
+{
+  "scripts": {
+    "start": "tsc && node dist/index.js",
+    "dev": "tsc-watch --onSuccess \"ts-node src/index.ts\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@abraham/reflection": "^0.10.0",
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
+    "tsyringe": "^4.7.0",
+    "typescript": "^4.8.2"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "tsc-watch": "^5.0.3",
+    "typescript-mix": "^3.1.3"
+  }
+}
