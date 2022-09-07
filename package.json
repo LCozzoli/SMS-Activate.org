@@ -1,6 +1,6 @@
 {
   "name": "smsactivate-org",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "A fully API support for sms-activate.org",
   "main": "dist/index.js",
   "devDependencies": {
@@ -11,14 +11,14 @@
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
-    "tsc-watch": "^5.0.3",
-    "typescript": "^4.8.2",
-    "typescript-mix": "^3.1.3"
+    "tsc-watch": "^5.0.3"
   },
   "dependencies": {
     "axios": "^0.27.2",
     "reflect-metadata": "^0.1.13",
-    "tsyringe": "^4.7.0"
+    "tsyringe": "^4.7.0",
+    "typescript": "^4.8.2",
+    "typescript-mix": "^3.1.3"
   },
   "scripts": {
     "start": "tsc && node dist/index.js",
