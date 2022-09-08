@@ -29,7 +29,6 @@ export class getIncomingCallStatus {
                 data: res.phone,
               });
           }
-          if (EApiErrors[res]) return reject(new Error(EApiErrors[res]));
           reject(res);
         })
         .catch((err) => reject(err));

@@ -14,8 +14,6 @@ export class getOutgoingCalls {
       this.query
         ?.makeCall(EApiActions.getOutgoingCalls, options)
         .then((response) => {
-          if (EApiErrors[response])
-            return reject(new Error(EApiErrors[response]));
           if (typeof response == 'object') return resolve(response);
           reject(response);
         })

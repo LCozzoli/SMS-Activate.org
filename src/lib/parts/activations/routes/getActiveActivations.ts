@@ -43,9 +43,6 @@ export class getActiveActivations {
               })
             );
           }
-
-          if (EApiErrors[response])
-            return reject(new Error(EApiErrors[response]));
           reject(response);
         })
         .catch((err) => reject(err));

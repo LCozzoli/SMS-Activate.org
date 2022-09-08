@@ -18,9 +18,6 @@ export class getContinueRentPriceNumber {
               return resolve(parseFloat(response.price));
             if (response.message && EApiErrors[response.message])
               return reject(new Error(EApiErrors[response.message]));
-          } else if (typeof response == 'string') {
-            if (EApiErrors[response])
-              return reject(new Error(EApiErrors[response]));
           }
           reject(response);
         })

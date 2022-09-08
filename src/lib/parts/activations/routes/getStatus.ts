@@ -17,20 +17,21 @@ export class getStatus {
       this.query
         ?.makeCall(EApiActions.setStatus, options)
         .then((res) => {
-          if (res.includes(':')) {
-            const data = res.split(':');
-            return resolve({
-              message: EActivationGetStatusAnswer[data[0]],
-              code: data[0],
-              data: data[1],
-            });
+          if (typeof res == 'string') {
+            if (res.includes(':')) {
+              const data = res.split(':');
+              return resolve({
+                message: EActivationGetStatusAnswer[data[0]],
+                code: data[0],
+                data: data[1],
+              });
+            }
+            if (EActivationGetStatusAnswer[res])
+              return resolve({
+                message: EActivationGetStatusAnswer[res],
+                code: res,
+              });
           }
-          if (EActivationGetStatusAnswer[res])
-            return resolve({
-              message: EActivationGetStatusAnswer[res],
-              code: res,
-            });
-          if (EApiErrors[res]) return reject(new Error(EApiErrors[res]));
           reject(res);
         })
         .catch((err) => reject(err));

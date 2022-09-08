@@ -1,7 +1,7 @@
 import { BASE_URL, EApiActions } from '../../ressources/comon';
 import { singleton } from 'tsyringe';
 import axios from 'axios';
-import { RequestErrors } from '../../ressources/errors';
+import { EApiErrors, RequestErrors } from '../../ressources/errors';
 
 @singleton()
 export class Query {
@@ -27,7 +27,11 @@ export class Query {
         .get(BASE_URL, {
           params,
         })
-        .then((result) => resolve(result.data))
+        .then((result) => {
+          if (typeof result.data == 'string' && EApiErrors[result.data])
+            return reject(new Error(EApiErrors[result.data]));
+          resolve(result.data);
+        })
         .catch((error) => reject(error));
     });
   }

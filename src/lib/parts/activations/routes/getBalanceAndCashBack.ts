@@ -16,8 +16,6 @@ export class getBalanceAndCashBack {
         .then((response) => {
           if (response.includes('ACCESS_BALANCE'))
             return resolve(parseFloat(response.split(':')[1]));
-          if (EApiErrors[response])
-            return reject(new Error(EApiErrors[response]));
           reject(response);
         })
         .catch((err) => reject(err));

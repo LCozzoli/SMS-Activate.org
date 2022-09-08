@@ -18,8 +18,6 @@ export class getAdditionalService {
               phone: elements[2],
             });
           }
-          if (EApiErrors[response])
-            return reject(new Error(EApiErrors[response]));
           reject(response);
         })
         .catch((err) => reject(err));

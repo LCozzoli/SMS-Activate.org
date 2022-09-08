@@ -1,31 +1,33 @@
-import 'reflect-metadata';
-import { autoInjectable } from 'tsyringe';
-import { use } from 'typescript-mix';
-import { Activations } from './lib/parts/activations/activations';
-import { Rental } from './lib/parts/rental/rental';
-import { Utils } from './lib/parts/utils/utils';
-import { Countries } from './lib/parts/utils/countries';
-import { Query } from './lib/query/query.module';
-
-interface Base extends Activations, Rental {}
-
-@autoInjectable()
-class Base {
-  @use(Activations, Rental) this;
-  constructor(
-    public apiKey: string,
-    public query?: Query,
-    public countries?: Countries,
-    public utils?: Utils
-  ) {
-    query?.setApiKey(apiKey);
-  }
-}
-
-export class SMSActivate extends Base {
-  public utils: Utils;
-
-  constructor(apiKey: string) {
-    super(apiKey);
-  }
-}
+export { SMSActivate } from './lib';
+export { EApiActions } from './ressources/comon';
+export { EApiErrors } from './ressources/errors';
+export {
+  IBasicID,
+  ICheckExtraActivationOptions,
+  IContinueRentNumberOptions,
+  IContinueRentNumberPriceOptions,
+  ICreateTaskForCallOptions,
+  IGetAdditionalServiceOptions,
+  IGetExtraActivationOptions,
+  IGetIncomingCallStatusOptions,
+  IGetMultiServiceNumberOptions,
+  IGetNumberOptions,
+  IGetOutgoingCallsOptions,
+  IGetPricesOptions,
+  IGetRentNumberOptions,
+  IGetRentStatusOptions,
+  IGetStatusOptions,
+  IGetTopCountriesByServiceOptions,
+  IIGetOutgoingCallsOptions,
+  IRentServicesAndCountriesOptions,
+  ISetRentStatusOptions,
+  ISetStatusOptions,
+} from './ressources/options';
+export {
+  IStatusResponse,
+  EActivationSetStatus,
+  EActivationSetStatusAnswer,
+  EActivationGetStatusAnswer,
+  EIncomingCallStatus,
+  ERentalSatus,
+} from './ressources/status';

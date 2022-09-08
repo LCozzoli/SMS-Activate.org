@@ -32,33 +32,24 @@ export class getNumberV2 {
       this.query
         ?.makeCall(EApiActions.getNumberV2, options)
         .then((response) => {
-          if (response.status) {
-            const activations = response.activeActivations || [];
-            return resolve(
-              activations.map((activation: any) => {
-                return {
-                  activationId: activation.activationId,
-                  serviceCode: activation.serviceCode,
-                  phoneNumber: activation.phoneNumber,
-                  activationCost: parseFloat(activation.activationCost),
-                  activationStatus: parseInt(activation.activationStatus, 10),
-                  discount: parseFloat(activation.discount),
-                  repeated: activation.repeated === '1',
-                  smsCode: activation.smsCode,
-                  smsText: activation.smsText,
-                  activationTime: new Date(activation.activationTime),
-                  countryCode: activation.countryCode,
-                  countryName: activation.countryName,
-                  canGetAnotherSms: activation.canGetAnotherSms === '1',
-                };
-              })
-            );
+          if (typeof response == 'object') {
+            return resolve({
+              activationId: response.activationId,
+              phoneNumber: response.phoneNumber,
+              activationCost: parseFloat(response.activationCost),
+              activationTime: new Date(response.activationTime),
+              activationOperator: response.activationOperator,
+              countryCode: response.countryCode,
+              canGetAnotherSms: response.canGetAnotherSms === '1',
+            });
           }
-          if (EApiErrors[response])
-            return reject(new Error(EApiErrors[response]));
           reject(response);
         })
         .catch((err) => reject(err));
     });
+  }
+
+  async getNumber(options: IGetNumberOptions): Promise<INumber> {
+    return this.getNumberV2(options);
   }
 }

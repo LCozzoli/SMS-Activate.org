@@ -15,8 +15,6 @@ export class checkExtraActivation {
         ?.makeCall(EApiActions.checkExtraActivation, opts)
         .then((response) => {
           if (typeof response == 'object') return resolve(response);
-          if (EApiErrors[response])
-            return reject(new Error(EApiErrors[response]));
           reject(response);
         })
         .catch((err) => reject(err));
