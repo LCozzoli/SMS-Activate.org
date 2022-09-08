@@ -4,10 +4,10 @@ This package fully supports all the https://sms-activate.org/ API with Typescrip
 
 ## Installation
 
-Install smsactivate-org with npm
+Install the package using npm
 
 ```bash
-  npm install smsactivate-org
+  npm install sms-activate-org
 ```
 
 ## Usage/Examples

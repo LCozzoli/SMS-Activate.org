@@ -1,5 +1,5 @@
 {
-  "name": "smsactivate-org",
+  "name": "sms-activate-org",
   "version": "1.0.5",
   "description": "A full NodeJS API for sms-activate.org",
   "main": "dist/index.js",
