@@ -1,5 +1,4 @@
 import { EApiActions } from '../../../../ressources/comon';
-import { EApiErrors } from '../../../../ressources/errors';
 import { IGetIncomingCallStatusOptions } from '../../../../ressources/options';
 import {
   EActivationSetStatusAnswer,

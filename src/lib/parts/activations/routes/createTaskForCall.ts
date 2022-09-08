@@ -1,5 +1,4 @@
 import { EApiActions } from '../../../../ressources/comon';
-import { EApiErrors } from '../../../../ressources/errors';
 import { ICreateTaskForCallOptions } from '../../../../ressources/options';
 import { Query } from '../../../query/query.module';
 

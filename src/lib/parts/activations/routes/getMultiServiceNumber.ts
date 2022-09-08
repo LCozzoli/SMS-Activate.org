@@ -1,4 +1,3 @@
-import { EApiErrors } from '../../../../ressources/errors';
 import { EApiActions } from '../../../../ressources/comon';
 import { IGetMultiServiceNumberOptions } from '../../../../ressources/options';
 import { Query } from '../../../query/query.module';

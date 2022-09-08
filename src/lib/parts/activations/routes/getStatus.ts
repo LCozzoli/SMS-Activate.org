@@ -1,5 +1,4 @@
 import { EApiActions } from '../../../../ressources/comon';
-import { EApiErrors } from '../../../../ressources/errors';
 import { IGetStatusOptions } from '../../../../ressources/options';
 import {
   EActivationGetStatusAnswer,
@@ -15,7 +14,7 @@ export class getStatus {
       if (typeof options == 'string' || typeof options == 'number')
         options = { id: options };
       this.query
-        ?.makeCall(EApiActions.setStatus, options)
+        ?.makeCall(EApiActions.getStatus, options)
         .then((res) => {
           if (typeof res == 'string') {
             if (res.includes(':')) {

@@ -1,4 +1,3 @@
-import { EApiErrors } from '../../../../ressources/errors';
 import { EApiActions } from '../../../../ressources/comon';
 import { IActiveActivation } from '../../../../ressources/responses';
 import { Query } from '../../../query/query.module';

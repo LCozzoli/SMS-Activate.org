@@ -1,5 +1,4 @@
 import { EApiActions } from '../../../../ressources/comon';
-import { EApiErrors } from '../../../../ressources/errors';
 import { IGetExtraActivationOptions } from '../../../../ressources/options';
 import { Query } from '../../../query/query.module';
 
