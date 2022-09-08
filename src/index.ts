@@ -1,33 +1,9 @@
-export { SMSActivate } from './lib';
-export { EApiActions } from './ressources/comon';
-export { EApiErrors } from './ressources/errors';
-export {
-  IBasicID,
-  ICheckExtraActivationOptions,
-  IContinueRentNumberOptions,
-  IContinueRentNumberPriceOptions,
-  ICreateTaskForCallOptions,
-  IGetAdditionalServiceOptions,
-  IGetExtraActivationOptions,
-  IGetIncomingCallStatusOptions,
-  IGetMultiServiceNumberOptions,
-  IGetNumberOptions,
-  IGetOutgoingCallsOptions,
-  IGetPricesOptions,
-  IGetRentNumberOptions,
-  IGetRentStatusOptions,
-  IGetStatusOptions,
-  IGetTopCountriesByServiceOptions,
-  IIGetOutgoingCallsOptions,
-  IRentServicesAndCountriesOptions,
-  ISetRentStatusOptions,
-  ISetStatusOptions,
-} from './ressources/options';
-export {
-  IStatusResponse,
-  EActivationSetStatus,
-  EActivationSetStatusAnswer,
-  EActivationGetStatusAnswer,
-  EIncomingCallStatus,
-  ERentalSatus,
-} from './ressources/status';
+export * from './ressources/comon';
+export * from './ressources/errors';
+export * from './ressources/options';
+export * from './ressources/status';
+export * from './ressources/responses';
+
+import { SMSActivate } from './lib';
+export { SMSActivate };
+export default SMSActivate;
