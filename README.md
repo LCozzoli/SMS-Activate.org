@@ -47,7 +47,7 @@ api.getNumber({ service: 'go', country: 'france' }).then(async number: SMSNumber
     console.error(err);
 
     /** Setting code status to Failed if the code was used **/
-    await api.failed();
+    await number.failed();
   }
 
 }).catch(error => console.error);
