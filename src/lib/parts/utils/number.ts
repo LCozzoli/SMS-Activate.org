@@ -36,6 +36,18 @@ export class SMSNumber {
     this.number = dataset.phoneNumber;
   }
 
+  data(): INumber {
+    return {
+      activationId: this.activationId,
+      phoneNumber: this.phoneNumber,
+      countryCode: this.countryCode,
+      activationCost: this.activationCost,
+      canGetAnotherSms: this.canGetAnotherSms,
+      activationTime: this.activationTime,
+      activationOperator: this.activationOperator,
+    };
+  }
+
   async getCode(): Promise<string> {
     return this.utils?.waitForCode(this.activationId);
   }
