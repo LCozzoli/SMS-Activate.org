@@ -13,7 +13,7 @@ export class getMultiServiceNumber {
   ): Promise<IMultiNumber[]> {
     return new Promise<IMultiNumber[]>((resolve, reject) => {
       this.query
-        ?.makeCall(EApiActions.getNumberV2, options)
+        ?.makeCall(EApiActions.getMultiServiceNumber, options)
         .then((response) => {
           if (typeof response == 'object') return resolve(response);
           reject(response);

@@ -18,7 +18,7 @@ export class getIncomingCallStatus {
     else opts = options;
     return new Promise<IStatusResponse>((resolve, reject) => {
       this.query
-        ?.makeCall(EApiActions.getStatus, opts)
+        ?.makeCall(EApiActions.getIncomingCallStatus, opts)
         .then((res) => {
           if (typeof res == 'object') {
             if (res.status && EActivationSetStatusAnswer[res.status])

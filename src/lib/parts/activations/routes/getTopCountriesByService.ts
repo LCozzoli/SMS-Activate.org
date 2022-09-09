@@ -11,6 +11,6 @@ export class getTopCountriesByService {
    * @param freePrice operators as string array
    */
   async getTopCountriesByService(options: IGetTopCountriesByServiceOptions) {
-    return this.query?.makeCall(EApiActions.getNumbersStatus, options);
+    return this.query?.makeCall(EApiActions.getTopCountriesByService, options);
   }
 }
