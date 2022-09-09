@@ -13,7 +13,7 @@ Install the package using npm
 ## Usage/Examples
 
 ```javascript
-import { SMSActivate, SMSNumber, EActivationSetStatus } from 'sms-activate-org';
+import { SMSActivate, SMSNumber } from 'sms-activate-org';
 
 const api = new SMSActivate('myapikey');
 
