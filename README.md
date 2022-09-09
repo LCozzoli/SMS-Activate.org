@@ -13,7 +13,7 @@ Install the package using npm
 ## Usage/Examples
 
 ```javascript
-import { SMSActivate, INumber, EActivationSetStatus } from 'sms-activate-org';
+import { SMSActivate, SMSNumber, EActivationSetStatus } from 'sms-activate-org';
 
 const api = new SMSActivate('myapikey');
 
@@ -24,28 +24,30 @@ const api = new SMSActivate('myapikey');
 
 /* Getting a number to activate Google services,
 * the wrapper converts automatically country names to the country id */
-api.getNumber({ service: 'go', country: 'france' }).then(async number: INumber => {
+api.getNumber({ service: 'go', country: 'france' }).then(async number: SMSNumber => {
 
   // Do your stuff with number.phoneNumber here,
-  // like writing in the number field, and press the send code button
+  // like writing in the number field
 
-  /** Setting code status to Sent **/
-  await api.setStatus({ id: number.activationId, status: EActivationSetStatus.Sent });
+  /** Setting code status to Ready **/
+  await number.ready(); // or api.setStatus({ id: number.activationId, status: EActivationSetStatus.Ready });
+
+  // Press the send sms button
 
   try {
     /** Waiting a maximum of 180s for the code to arrive **/
-    const code = await api.utils.waitForCode(number.activationId);
+    const code = await number.getCode();
 
     // Do your stuff with the code there
 
     /** Setting code status to Success if everything worked as expected **/
-    await api.setStatus({ id: number.activationId, status: EActivationSetStatus.Success });
+    await number.success(); // or api.setStatus({ id: number.activationId, status: EActivationSetStatus.Success });
+
   } catch(err) {
     console.error(err);
 
-    /** Setting code status to Failed if the code was used,
-     * you can also handle the code resend using EActivationSetStatus.RequestAnotherCode **/
-    await api.setStatus({ id: number.activationId, status: EActivationSetStatus.Failed });
+    /** Setting code status to Failed if the code was used **/
+    await api.failed();
   }
 
 }).catch(error => console.error);

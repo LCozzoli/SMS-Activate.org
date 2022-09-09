@@ -3,6 +3,7 @@ import { IGetNumberOptions } from '../../../../ressources/options';
 import { Query } from '../../../query/query.module';
 import { INumber } from '../../../../ressources/responses';
 import { Countries } from '../../utils/countries';
+import { SMSNumber } from '../../utils/number';
 
 export class getNumberV2 {
   public query?: Query;
@@ -23,24 +24,26 @@ export class getNumberV2 {
    * @returns Phone number as string
    * */
 
-  async getNumberV2(options: IGetNumberOptions): Promise<INumber> {
+  async getNumberV2(options: IGetNumberOptions): Promise<SMSNumber> {
     if (options.phoneException) options.phoneException = '1';
     if (typeof options.country == 'string')
       options.country = await this.countries?.toNumber(options.country);
-    return new Promise<INumber>((resolve, reject) => {
+    return new Promise<SMSNumber>((resolve, reject) => {
       this.query
         ?.makeCall(EApiActions.getNumberV2, options)
         .then((response) => {
           if (typeof response == 'object') {
-            return resolve({
-              activationId: response.activationId,
-              phoneNumber: response.phoneNumber,
-              activationCost: parseFloat(response.activationCost),
-              activationTime: new Date(response.activationTime),
-              activationOperator: response.activationOperator,
-              countryCode: response.countryCode,
-              canGetAnotherSms: response.canGetAnotherSms === '1',
-            });
+            return resolve(
+              new SMSNumber({
+                activationId: response.activationId,
+                phoneNumber: response.phoneNumber,
+                activationCost: parseFloat(response.activationCost),
+                activationTime: new Date(response.activationTime),
+                activationOperator: response.activationOperator,
+                countryCode: response.countryCode,
+                canGetAnotherSms: response.canGetAnotherSms === '1',
+              })
+            );
           }
           reject(response);
         })
@@ -48,7 +51,7 @@ export class getNumberV2 {
     });
   }
 
-  async getNumber(options: IGetNumberOptions): Promise<INumber> {
+  async getNumber(options: IGetNumberOptions): Promise<SMSNumber> {
     return this.getNumberV2(options);
   }
 }

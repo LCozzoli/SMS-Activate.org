@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { autoInjectable } from 'tsyringe';
 import { use } from 'typescript-mix';
 import { Activations } from './parts/activations/activations';

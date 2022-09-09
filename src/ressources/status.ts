@@ -5,7 +5,7 @@ export interface IStatusResponse {
 }
 
 export enum EActivationSetStatus {
-  Sent = 1,
+  Ready = 1,
   RequestAnotherCode = 3,
   Success = 6,
   Failed = 8,
