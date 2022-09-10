@@ -1,4 +1,4 @@
-# Sms-Activate.org Typescript
+# Sms-Activate.org
 
 This package fully supports all the https://sms-activate.org/ API with Typescript types.
 
