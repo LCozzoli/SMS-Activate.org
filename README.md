@@ -22,9 +22,9 @@ const api = new SMSActivate('myapikey');
     console.log(`My balance is ${balance}`);
 })();
 
-/* Getting a number to activate Google services,
-* the wrapper converts automatically country names to the country id */
-api.getNumber({ service: 'go', country: 'france' }).then(async number: SMSNumber => {
+/* Getting a number to activate Gmail services,
+* the wrapper automatically resolves country and services names */
+api.getNumber({ service: 'Gmail', country: 'France' }).then(async number: SMSNumber => {
 
   // Do your stuff with number.phoneNumber here,
   // like writing in the number field

@@ -11,6 +11,7 @@ import { getMultiServiceNumber } from './routes/getMultiServiceNumber';
 import { getNumbersStatus } from './routes/getNumbersStatus';
 import { getNumberV2 } from './routes/getNumberV2';
 import { getOutgoingCalls } from './routes/getOutgoingCalls';
+import { getPrices } from './routes/getPrices';
 import { getStatus } from './routes/getStatus';
 import { getTopCountriesByService } from './routes/getTopCountriesByService';
 import { setStatus } from './routes/setStatus';
@@ -25,6 +26,7 @@ export interface Activations
     getMultiServiceNumber,
     setStatus,
     getStatus,
+    getPrices,
     getIncomingCallStatus,
     getAdditionalService,
     getExtraActivation,
@@ -43,6 +45,7 @@ export class Activations {
     getMultiServiceNumber,
     setStatus,
     getStatus,
+    getPrices,
     getIncomingCallStatus,
     getAdditionalService,
     getExtraActivation,

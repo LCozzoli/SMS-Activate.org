@@ -1,13 +1,14 @@
 import { EApiActions } from '../../../../ressources/comon';
 import { IGetNumberOptions } from '../../../../ressources/options';
 import { Query } from '../../../query/query.module';
-import { INumber } from '../../../../ressources/responses';
 import { Countries } from '../../utils/countries';
 import { SMSNumber } from '../../utils/number';
+import { Services } from '../../utils/services';
 
 export class getNumberV2 {
   public query?: Query;
   public countries?: Countries;
+  public services?: Services;
 
   /**
    * Order a phone number for verification
@@ -28,6 +29,7 @@ export class getNumberV2 {
     if (options.phoneException) options.phoneException = '1';
     if (typeof options.country == 'string')
       options.country = await this.countries?.toNumber(options.country);
+    if (options.service) options.service = this.services?.get(options.service);
     return new Promise<SMSNumber>((resolve, reject) => {
       this.query
         ?.makeCall(EApiActions.getNumberV2, options)

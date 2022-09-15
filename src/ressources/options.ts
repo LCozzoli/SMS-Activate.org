@@ -20,7 +20,7 @@ export interface IGetNumberOptions
 export interface IGetMultiServiceNumberOptions
   extends Record<string, string | number> {
   service: string;
-  country: number;
+  country: number | string;
   operator?: string;
   ref?: string;
   forward?: string;
@@ -42,7 +42,7 @@ export interface ISetStatusOptions extends Record<string, string | number> {
 
 export interface IGetPricesOptions extends Record<string, string | number> {
   service?: string;
-  country?: number;
+  country?: number | string;
 }
 
 export interface IGetIncomingCallStatusOptions extends IBasicID {}

@@ -5,6 +5,7 @@ import { Rental } from './parts/rental/rental';
 import { Utils } from './parts/utils/utils';
 import { Countries } from './parts/utils/countries';
 import { Query } from './query/query.module';
+import { Services } from './parts/utils/services';
 
 interface Base extends Activations, Rental {}
 
@@ -15,6 +16,7 @@ class Base {
     public apiKey: string,
     public query?: Query,
     public countries?: Countries,
+    public services?: Services,
     public utils?: Utils
   ) {
     query?.setApiKey(apiKey);
