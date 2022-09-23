@@ -50,7 +50,7 @@ api.getNumber({ service: 'Gmail', country: 'France' }).then(async number: SMSNum
     await number.failed();
   }
 
-}).catch(error => console.error);
+}).catch(console.error);
 ```
 
 ## Note
