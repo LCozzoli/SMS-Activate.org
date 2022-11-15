@@ -18,11 +18,13 @@ export class getStatus {
         .then((res) => {
           if (typeof res == 'string') {
             if (res.includes(':')) {
-              const data = res.split(':');
+              const index = res.indexOf(':');
+              const code = res.slice(0, index);
+              const data = res.slice(index + 1);
               return resolve({
-                message: EActivationGetStatusAnswer[data[0]],
-                code: data[0],
-                data: data[1],
+                message: EActivationGetStatusAnswer[code],
+                code,
+                data,
               });
             }
             if (EActivationGetStatusAnswer[res])
