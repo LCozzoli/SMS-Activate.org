@@ -18,7 +18,7 @@ export class waitForCode {
           return resolve(result.data);
         if (result.message != EActivationGetStatusAnswer.STATUS_WAIT_CODE)
           return reject(result.code);
-        sleep(1000);
+        await sleep(1000);
       }
       reject('EXPIRED');
     });
