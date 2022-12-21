@@ -22,9 +22,11 @@ export class getStatus {
               const code = res.slice(0, index);
               const data = res.slice(index + 1);
               return resolve({
-                message: EActivationGetStatusAnswer[code],
+                message: EActivationGetStatusAnswer[code]
+                  ? EActivationGetStatusAnswer[code]
+                  : EActivationGetStatusAnswer.STATUS_UNEXPECTED,
                 code,
-                data,
+                data: EActivationGetStatusAnswer[code] ? data : res,
               });
             }
             if (EActivationGetStatusAnswer[res])

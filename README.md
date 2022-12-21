@@ -15,7 +15,7 @@ Install the package using npm
 ```javascript
 import { SMSActivate, SMSNumber } from 'sms-activate-org';
 
-const api = new SMSActivate('myapikey');
+const api = new SMSActivate('myapikey'); //OR SMS_ACTIVATE_API_KEY=myapikey in .env
 
 (async () => {
     const balance = await api.getBalance();
@@ -27,32 +27,21 @@ const api = new SMSActivate('myapikey');
 api.getNumber({ service: 'Gmail', country: 'France' }).then(async number: SMSNumber => {
 
   // Do your stuff with number.phoneNumber here,
-  // like writing in the number field
+  // like writing it in the number field
 
-  /** Setting code status to Ready **/
-  await number.ready(); // or api.setStatus({ id: number.activationId, status: EActivationSetStatus.Ready });
+  await number.ready();
 
-  // Press the send sms button
+  // Press the "send sms" button, wait for 180s to catch the code
 
-  try {
-    /** Waiting a maximum of 180s for the code to arrive **/
-    const code = await number.getCode();
+  number.getCode(180).then(async code => {
 
-    // Do your stuff with the code there
+    // Do your stuff with the verification code there
 
-    /** Setting code status to Success if everything worked as expected **/
-    await number.success(); // or api.setStatus({ id: number.activationId, status: EActivationSetStatus.Success });
-
-  } catch(err) {
+    await number.success();
+  }).catch(err => {
     console.error(err);
-
-    /** Setting code status to Failed if the code was used **/
-    await number.failed();
-  }
+    number.failed();
+  })
 
 }).catch(console.error);
 ```
-
-## Note
-
-I wrapped all the website API, the wiki is not yet finished but don't hesitate to ask for help in issues.

@@ -24,6 +24,7 @@ export enum EActivationGetStatusAnswer {
   STATUS_WAIT_RESEND = 'Waiting for a new SMS',
   STATUS_CANCEL = 'Activation failure',
   STATUS_OK = 'Activation success',
+  STATUS_UNEXPECTED = 'Unexpected status response',
 }
 
 export enum EIncomingCallStatus {

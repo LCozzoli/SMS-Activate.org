@@ -13,7 +13,7 @@ interface Base extends Activations, Rental {}
 class Base {
   @use(Activations, Rental) this;
   constructor(
-    public apiKey: string,
+    public apiKey?: string,
     public query?: Query,
     public countries?: Countries,
     public services?: Services,
@@ -26,7 +26,7 @@ class Base {
 export class SMSActivate extends Base {
   public utils: Utils;
 
-  constructor(apiKey: string) {
+  constructor(apiKey?: string) {
     super(apiKey);
   }
 }

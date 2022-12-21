@@ -1,4 +1,6 @@
 import 'reflect-metadata';
+import 'dotenv/config';
+
 export * from './ressources/comon';
 export * from './ressources/errors';
 export * from './ressources/options';
