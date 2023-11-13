@@ -29,7 +29,7 @@ export class Query {
         ...query,
       });
       axios
-        .get(BASE_URL, {
+        .get(this.baseUrl, {
           params,
         })
         .then((result) => {
