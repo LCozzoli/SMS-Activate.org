@@ -1,0 +1,30 @@
+export declare const BASE_URL = "http://api.sms-activate.org/stubs/handler_api.php";
+export declare enum EApiActions {
+    getNumbersStatus = 0,
+    getTopCountriesByService = 1,
+    getBalance = 2,
+    getBalanceAndCashBack = 3,
+    getOperators = 4,
+    getActiveActivations = 5,
+    getNumber = 6,
+    getNumberV2 = 7,
+    getMultiServiceNumber = 8,
+    setStatus = 9,
+    getStatus = 10,
+    getIncomingCallStatus = 11,
+    getPrices = 12,
+    getCountries = 13,
+    getAdditionalService = 14,
+    getExtraActivation = 15,
+    checkExtraActivation = 16,
+    createTaskForCall = 17,
+    getOutgoingCalls = 18,
+    getRentServicesAndCountries = 19,
+    getRentNumber = 20,
+    getRentStatus = 21,
+    setRentStatus = 22,
+    getRentList = 23,
+    continueRentNumber = 24,
+    getContinueRentPriceNumber = 25
+}
+//# sourceMappingURL=comon.d.ts.map
