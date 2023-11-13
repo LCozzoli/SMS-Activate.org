@@ -1,0 +1,1 @@
+{"version":3,"file":"getActiveActivations.d.ts","sourceRoot":"","sources":["../../../../../src/lib/parts/activations/routes/getActiveActivations.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,iBAAiB,EAAE,MAAM,kCAAkC,CAAC;AACrE,OAAO,EAAE,KAAK,EAAE,MAAM,6BAA6B,CAAC;AAEpD,qBAAa,oBAAoB;IACxB,KAAK,CAAC,EAAE,KAAK,CAAC;IAEf,oBAAoB,IAAI,OAAO,CAAC,iBAAiB,EAAE,CAAC;CA0C3D"}
