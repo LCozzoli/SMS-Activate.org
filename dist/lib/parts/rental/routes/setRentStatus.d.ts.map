@@ -1,0 +1,1 @@
+{"version":3,"file":"setRentStatus.d.ts","sourceRoot":"","sources":["../../../../../src/lib/parts/rental/routes/setRentStatus.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,qBAAqB,EAAE,MAAM,gCAAgC,CAAC;AACvE,OAAO,EAAE,KAAK,EAAE,MAAM,6BAA6B,CAAC;AAEpD,qBAAa,aAAa;IACjB,KAAK,CAAC,EAAE,KAAK,CAAC;IAEf,aAAa,CAAC,OAAO,EAAE,qBAAqB,GAAG,OAAO,CAAC,IAAI,CAAC;CAenE"}
