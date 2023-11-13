@@ -5,10 +5,12 @@ import { EApiErrors, RequestErrors } from '../../ressources/errors';
 
 @singleton()
 export class Query {
+  private baseUrl: string;
   private apiKey: string | null;
 
-  async setApiKey(apiKey?: string) {
+  async setApiKey(baseUrl: string, apiKey?: string) {
     this.apiKey = apiKey || process.env.SMS_ACTIVATE_API_KEY;
+    this.baseUrl = baseUrl;
   }
 
   makeCall(
@@ -27,7 +29,7 @@ export class Query {
         ...query,
       });
       axios
-        .get(BASE_URL, {
+        .get(this.baseUrl, {
           params,
         })
         .then((result) => {
