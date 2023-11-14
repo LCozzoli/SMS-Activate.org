@@ -50,6 +50,15 @@ class getNumberV2 {
                             canGetAnotherSms: response.canGetAnotherSms === '1',
                         }));
                     }
+                    if (typeof response == 'string') {
+                        if (response.includes('ACCESS_NUMBER')) {
+                            const elements = response.split(':');
+                            new number_1.SMSNumber({
+                                activationId: elements[1],
+                                phoneNumber: elements[2],
+                            });
+                        }
+                    }
                     reject(response);
                 }).catch((err) => reject(err));
             });
