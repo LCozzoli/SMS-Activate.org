@@ -28,6 +28,8 @@ export class Query {
         action: EApiActions[action],
         ...query,
       });
+      console.log(this.baseUrl)
+      console.log(params)
       axios
         .get(this.baseUrl, {
           params,
