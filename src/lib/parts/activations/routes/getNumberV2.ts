@@ -47,6 +47,15 @@ export class getNumberV2 {
               })
             );
           }
+          if (typeof response == 'string') {
+              if (response.includes('ACCESS_NUMBER')) {
+                  const elements = response.split(':');
+                  new SMSNumber({
+                      activationId: elements[1],
+                      phoneNumber: elements[2],
+                  })
+              }
+          }
           reject(response);
         })
         .catch((err) => reject(err));

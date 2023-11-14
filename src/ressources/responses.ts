@@ -17,11 +17,11 @@ export interface IActiveActivation {
 export interface INumber {
   activationId: string;
   phoneNumber: string;
-  activationCost: number;
-  countryCode: string;
-  canGetAnotherSms: boolean;
-  activationTime: Date;
-  activationOperator: string;
+  activationCost?: number;
+  countryCode?: string;
+  canGetAnotherSms?: boolean;
+  activationTime?: Date;
+  activationOperator?: string;
 }
 
 export interface IMultiNumber {
