@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="fb51ba16-6605-4812-9bf0-0ee9061f7772" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getNumberV2.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getNumberV2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getNumberV2.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getNumberV2.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/parts/activations/routes/getNumberV2.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/activations/routes/getNumberV2.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/query/query.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/query/query.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ressources/comon.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ressources/comon.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

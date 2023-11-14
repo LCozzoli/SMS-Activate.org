@@ -38,7 +38,7 @@ class getNumberV2 {
                 options.service = (_b = this.services) === null || _b === void 0 ? void 0 : _b.get(options.service);
             return new Promise((resolve, reject) => {
                 var _a;
-                (_a = this.query) === null || _a === void 0 ? void 0 : _a.makeCall(comon_1.EApiActions.getNumberV2, options).then((response) => {
+                (_a = this.query) === null || _a === void 0 ? void 0 : _a.makeCall(comon_1.EApiActions.getNumber, options).then((response) => {
                     if (typeof response == 'object') {
                         return resolve(new number_1.SMSNumber({
                             activationId: response.activationId,

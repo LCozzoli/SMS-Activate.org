@@ -32,7 +32,7 @@ export class getNumberV2 {
     if (options.service) options.service = this.services?.get(options.service);
     return new Promise<SMSNumber>((resolve, reject) => {
       this.query
-        ?.makeCall(EApiActions.getNumberV2, options)
+        ?.makeCall(EApiActions.getNumber, options)
         .then((response) => {
           if (typeof response == 'object') {
             return resolve(
