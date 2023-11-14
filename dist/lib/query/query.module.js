@@ -38,6 +38,8 @@ let Query = class Query {
             if (!this.apiKey)
                 return reject(new Error(errors_1.RequestErrors.MissingApiKey));
             const params = new URLSearchParams(Object.assign({ api_key: this.apiKey, action: comon_1.EApiActions[action] }, query));
+            console.log(this.baseUrl);
+            console.log(params);
             axios_1.default
                 .get(this.baseUrl, {
                 params,
