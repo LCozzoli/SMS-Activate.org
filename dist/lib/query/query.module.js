@@ -50,7 +50,6 @@ let Query = class Query {
             axios_1.default
                 .get(this.baseUrl, axiosConfig)
                 .then((result) => {
-                console.log('result: ' + JSON.parse(JSON.stringify(result)));
                 if (process.env.SMS_ACTIVATE_DEBUG)
                     console.debug('Success |', result.data);
                 if (typeof result.data == 'string' && errors_1.EApiErrors[result.data])
@@ -58,7 +57,6 @@ let Query = class Query {
                 resolve(result.data);
             })
                 .catch((error) => {
-                console.log('err: ' + error.toString());
                 console.log('action ' + comon_1.EApiActions[action]);
                 if (process.env.SMS_ACTIVATE_DEBUG)
                     console.error('Catch |', error);
