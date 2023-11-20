@@ -54,6 +54,7 @@ let Query = class Query {
                         : undefined,
                     protocol: this.proxy.protocol,
                 };
+                console.log(axiosConfig);
             }
             axios_1.default
                 .get(this.baseUrl, axiosConfig)
