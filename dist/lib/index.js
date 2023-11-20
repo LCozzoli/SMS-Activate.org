@@ -15,17 +15,17 @@ const typescript_mix_1 = require("typescript-mix");
 const activations_1 = require("./parts/activations/activations");
 const rental_1 = require("./parts/rental/rental");
 const utils_1 = require("./parts/utils/utils");
-const countries_1 = require("./parts/utils/countries");
+// import { Countries } from './parts/utils/countries';
 const query_module_1 = require("./query/query.module");
-const services_1 = require("./parts/utils/services");
 let Base = class Base {
-    constructor(baseUrl, apiKey, proxy, query, countries, services, utils) {
+    constructor(baseUrl, apiKey, proxy, query, 
+    // public countries?: Countries,
+    // public services?: Services,
+    utils) {
         this.baseUrl = baseUrl;
         this.apiKey = apiKey;
         this.proxy = proxy;
         this.query = query;
-        this.countries = countries;
-        this.services = services;
         this.utils = utils;
         query === null || query === void 0 ? void 0 : query.setApiKey(baseUrl, apiKey, proxy);
     }
@@ -37,8 +37,6 @@ __decorate([
 Base = __decorate([
     (0, tsyringe_1.autoInjectable)(),
     __metadata("design:paramtypes", [String, String, Object, query_module_1.Query,
-        countries_1.Countries,
-        services_1.Services,
         utils_1.Utils])
 ], Base);
 class SMSActivate extends Base {

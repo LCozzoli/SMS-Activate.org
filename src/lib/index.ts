@@ -3,9 +3,9 @@ import { use } from 'typescript-mix';
 import { Activations } from './parts/activations/activations';
 import { Rental } from './parts/rental/rental';
 import { Utils } from './parts/utils/utils';
-import { Countries } from './parts/utils/countries';
+// import { Countries } from './parts/utils/countries';
 import { Query } from './query/query.module';
-import { Services } from './parts/utils/services';
+// import { Services } from './parts/utils/services';
 
 interface Base extends Activations, Rental {}
 
@@ -25,8 +25,8 @@ class Base {
     public apiKey?: string,
     public proxy?: ProxyInfo,
     public query?: Query,
-    public countries?: Countries,
-    public services?: Services,
+    // public countries?: Countries,
+    // public services?: Services,
     public utils?: Utils
   ) {
     query?.setApiKey(baseUrl,apiKey,proxy);

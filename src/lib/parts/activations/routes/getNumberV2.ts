@@ -1,13 +1,13 @@
 import { EApiActions } from '../../../../ressources/comon';
 import { IGetNumberOptions } from '../../../../ressources/options';
 import { Query } from '../../../query/query.module';
-import { Countries } from '../../utils/countries';
+// import { Countries } from '../../utils/countries';
 import { SMSNumber } from '../../utils/number';
 import { Services } from '../../utils/services';
 
 export class getNumberV2 {
   public query?: Query;
-  public countries?: Countries;
+  // public countries?: Countries;
   public services?: Services;
 
   /**
@@ -25,10 +25,10 @@ export class getNumberV2 {
    * @returns Phone number as string
    * */
 
-  async getNumberV2(options: IGetNumberOptions): Promise<SMSNumber> {
+  async getNumberV2(options: any): Promise<SMSNumber> {
     if (options.phoneException) options.phoneException = '1';
-    if (typeof options.country == 'string')
-      options.country = await this.countries?.toNumber(options.country);
+    // if (typeof options.country == 'string')
+    //   options.country = await this.countries?.toNumber(options.country);
     if (options.service) options.service = this.services?.get(options.service);
     return new Promise<SMSNumber>((resolve, reject) => {
       this.query

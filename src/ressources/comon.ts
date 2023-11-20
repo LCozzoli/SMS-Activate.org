@@ -15,7 +15,7 @@ export enum EApiActions {
   getStatus,
   getIncomingCallStatus,
   getPrices,
-  getCountries,
+  // getCountries,
   getAdditionalService,
   getExtraActivation,
   checkExtraActivation,

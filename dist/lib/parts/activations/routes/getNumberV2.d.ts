@@ -1,11 +1,9 @@
 import { IGetNumberOptions } from '../../../../ressources/options';
 import { Query } from '../../../query/query.module';
-import { Countries } from '../../utils/countries';
 import { SMSNumber } from '../../utils/number';
 import { Services } from '../../utils/services';
 export declare class getNumberV2 {
     query?: Query;
-    countries?: Countries;
     services?: Services;
     /**
      * Order a phone number for verification
@@ -21,7 +19,7 @@ export declare class getNumberV2 {
      * @param options.ref * Referral ID as string
      * @returns Phone number as string
      * */
-    getNumberV2(options: IGetNumberOptions): Promise<SMSNumber>;
+    getNumberV2(options: any): Promise<SMSNumber>;
     getNumber(options: IGetNumberOptions): Promise<SMSNumber>;
 }
 //# sourceMappingURL=getNumberV2.d.ts.map

@@ -13,13 +13,13 @@ exports.getPrices = void 0;
 const comon_1 = require("../../../../ressources/comon");
 class getPrices {
     getPrices(options) {
-        var _a, _b, _c;
+        var _a, _b;
         return __awaiter(this, void 0, void 0, function* () {
-            if (typeof options.country == 'string')
-                options.country = yield ((_a = this.countries) === null || _a === void 0 ? void 0 : _a.toNumber(options.country));
+            // if (typeof options.country == 'string')
+            //   options.country = await this.countries?.toNumber(options.country);
             if (options.service)
-                options.service = (_b = this.services) === null || _b === void 0 ? void 0 : _b.get(options.service);
-            return (_c = this.query) === null || _c === void 0 ? void 0 : _c.makeCall(comon_1.EApiActions.getPrices, options);
+                options.service = (_a = this.services) === null || _a === void 0 ? void 0 : _a.get(options.service);
+            return (_b = this.query) === null || _b === void 0 ? void 0 : _b.makeCall(comon_1.EApiActions.getPrices, options);
         });
     }
 }

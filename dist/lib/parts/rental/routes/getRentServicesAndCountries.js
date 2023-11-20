@@ -12,11 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getRentServicesAndCountries = void 0;
 const comon_1 = require("../../../../ressources/comon");
 class getRentServicesAndCountries {
+    // public countries?: Countries;
     getRentServicesAndCountries(options) {
-        var _a;
         return __awaiter(this, void 0, void 0, function* () {
-            if (options.country && typeof options.country == 'string')
-                options.country = yield ((_a = this.countries) === null || _a === void 0 ? void 0 : _a.toNumber(options.country));
+            // if (options.country && typeof options.country == 'string')
+            //   options.country = await this.countries?.toNumber(options.country);
             return new Promise((resolve, reject) => {
                 var _a;
                 (_a = this.query) === null || _a === void 0 ? void 0 : _a.makeCall(comon_1.EApiActions.getRentServicesAndCountries).then((response) => {
