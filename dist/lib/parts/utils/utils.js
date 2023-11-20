@@ -14,13 +14,13 @@ const tsyringe_1 = require("tsyringe");
 const typescript_mix_1 = require("typescript-mix");
 const code_1 = require("./code");
 // import { Countries } from './countries';
-const services_1 = require("./services");
+// import { Services } from './services';
 const query_module_1 = require("../../query/query.module");
 let Utils = class Utils {
     constructor(
     // public countries: Countries,
-    services, query) {
-        this.services = services;
+    // public services: Services,
+    query) {
         this.query = query;
     }
 };
@@ -31,7 +31,6 @@ __decorate([
 ], Utils.prototype, "this", void 0);
 exports.Utils = Utils = __decorate([
     (0, tsyringe_1.singleton)(),
-    __metadata("design:paramtypes", [services_1.Services,
-        query_module_1.Query])
+    __metadata("design:paramtypes", [query_module_1.Query])
 ], Utils);
 //# sourceMappingURL=utils.js.map

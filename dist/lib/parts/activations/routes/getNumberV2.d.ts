@@ -1,10 +1,8 @@
 import { IGetNumberOptions } from '../../../../ressources/options';
 import { Query } from '../../../query/query.module';
 import { SMSNumber } from '../../utils/number';
-import { Services } from '../../utils/services';
 export declare class getNumberV2 {
     query?: Query;
-    services?: Services;
     /**
      * Order a phone number for verification
      * @param options Options as IGetNumberOptions

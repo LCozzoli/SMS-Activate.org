@@ -11,15 +11,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPrices = void 0;
 const comon_1 = require("../../../../ressources/comon");
+// import { Countries } from '../../utils/countries';
+// import { Services } from '../../utils/services';
 class getPrices {
+    // public countries?: Countries;
+    // public services?: Services;
     getPrices(options) {
-        var _a, _b;
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
             // if (typeof options.country == 'string')
             //   options.country = await this.countries?.toNumber(options.country);
-            if (options.service)
-                options.service = (_a = this.services) === null || _a === void 0 ? void 0 : _a.get(options.service);
-            return (_b = this.query) === null || _b === void 0 ? void 0 : _b.makeCall(comon_1.EApiActions.getPrices, options);
+            // if (options.service) options.service = this.services?.get(options.service);
+            return (_a = this.query) === null || _a === void 0 ? void 0 : _a.makeCall(comon_1.EApiActions.getPrices, options);
         });
     }
 }

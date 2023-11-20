@@ -11,18 +11,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getTopCountriesByService = void 0;
 const comon_1 = require("../../../../ressources/comon");
+// import { Services } from '../../utils/services';
 class getTopCountriesByService {
+    // public services?: Services;
     /**
      * Request for top countries by service
-     * @param service service as a string
-     * @param freePrice operators as string array
+     * @param options
      */
     getTopCountriesByService(options) {
-        var _a, _b;
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
-            if (options.service)
-                options.service = (_a = this.services) === null || _a === void 0 ? void 0 : _a.get(options.service);
-            return (_b = this.query) === null || _b === void 0 ? void 0 : _b.makeCall(comon_1.EApiActions.getTopCountriesByService, options);
+            // if (options.service) options.service = this.services?.get(options.service);
+            return (_a = this.query) === null || _a === void 0 ? void 0 : _a.makeCall(comon_1.EApiActions.getTopCountriesByService, options);
         });
     }
 }

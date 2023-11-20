@@ -11,12 +11,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getMultiServiceNumber = void 0;
 const comon_1 = require("../../../../ressources/comon");
+// import { Services } from '../../utils/services';
 class getMultiServiceNumber {
+    // public services?: Services;
     getMultiServiceNumber(options) {
-        var _a;
         return __awaiter(this, void 0, void 0, function* () {
-            if (options.service)
-                options.service = (_a = this.services) === null || _a === void 0 ? void 0 : _a.get(options.service);
+            // if (options.service) options.service = this.services?.get(options.service);
             return new Promise((resolve, reject) => {
                 var _a;
                 (_a = this.query) === null || _a === void 0 ? void 0 : _a.makeCall(comon_1.EApiActions.getMultiServiceNumber, options).then((response) => {

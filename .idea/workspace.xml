@@ -3,6 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="fb51ba16-6605-4812-9bf0-0ee9061f7772" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/parts/activations/routes/getAdditionalService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/activations/routes/getAdditionalService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/parts/activations/routes/getMultiServiceNumber.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/activations/routes/getMultiServiceNumber.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/parts/activations/routes/getNumberV2.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/activations/routes/getNumberV2.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/parts/activations/routes/getPrices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/activations/routes/getPrices.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/parts/activations/routes/getTopCountriesByService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/activations/routes/getTopCountriesByService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/parts/rental/routes/getRentNumber.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/rental/routes/getRentNumber.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/parts/utils/services.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/parts/utils/services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/utils/services.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/parts/utils/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/utils/utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

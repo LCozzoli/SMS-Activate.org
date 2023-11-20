@@ -13,7 +13,10 @@ exports.getNumberV2 = void 0;
 const comon_1 = require("../../../../ressources/comon");
 // import { Countries } from '../../utils/countries';
 const number_1 = require("../../utils/number");
+// import { Services } from '../../utils/services';
 class getNumberV2 {
+    // public countries?: Countries;
+    // public services?: Services;
     /**
      * Order a phone number for verification
      * @param options Options as IGetNumberOptions
@@ -29,14 +32,12 @@ class getNumberV2 {
      * @returns Phone number as string
      * */
     getNumberV2(options) {
-        var _a;
         return __awaiter(this, void 0, void 0, function* () {
             if (options.phoneException)
                 options.phoneException = '1';
             // if (typeof options.country == 'string')
             //   options.country = await this.countries?.toNumber(options.country);
-            if (options.service)
-                options.service = (_a = this.services) === null || _a === void 0 ? void 0 : _a.get(options.service);
+            // if (options.service) options.service = options.service;
             return new Promise((resolve, reject) => {
                 var _a;
                 (_a = this.query) === null || _a === void 0 ? void 0 : _a.makeCall(comon_1.EApiActions.getNumber, options).then((response) => {
