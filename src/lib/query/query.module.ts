@@ -1,9 +1,9 @@
 import { BASE_URL, EApiActions } from '../../ressources/comon';
 import { singleton } from 'tsyringe';
 import { EApiErrors, RequestErrors } from '../../ressources/errors';
-import {IProxyOptions} from "../../ressources/options";
-import { RequestInit } from 'node-fetch';
-import {HttpsProxyAgent} from 'https-proxy-agent';
+import { IProxyOptions } from "../../ressources/options";
+import fetch, { RequestInit } from 'node-fetch';
+import { HttpsProxyAgent } from 'https-proxy-agent';
 
 @singleton()
 export class Query {
@@ -26,36 +26,37 @@ export class Query {
     if (process.env.SMS_ACTIVATE_DEBUG)
       console.log('Call >', EApiActions[action], query);
 
-    return new Promise<any>(async (resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       if (!this.apiKey) return reject(new Error(RequestErrors.MissingApiKey));
 
-      const requestOptions: RequestInit = {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      };
+      const url = `${this.baseUrl}?api_key=${this.apiKey}&action=${EApiActions[action]}`;
+      const params = new URLSearchParams();
 
-      const url = new URL(this.baseUrl);
-      url.searchParams.append('api_key', this.apiKey);
-      url.searchParams.append('action', EApiActions[action]);
+      for (const key in query) {
+        if (query.hasOwnProperty(key)) {
+          params.append(key, String(query[key]));
+        }
+      }
 
-      Object.keys(query).forEach((key) => {
-        url.searchParams.append(key, query[key].toString());
-      });
+      const fullUrl = `${url}&${params.toString()}`;
+
+      const requestOptions: RequestInit = {};
 
       if (this.proxy) {
         console.log('proxy passed');
         const proxyUrl = `${this.proxy.protocol}://${this.proxy.ip}:${this.proxy.port}`;
-        const { HttpsProxyAgent } = await import('https-proxy-agent');
         const agent = new HttpsProxyAgent(proxyUrl);
         requestOptions.agent = agent;
       }
 
-      const fetch = (await import('node-fetch')).default;
-
-      fetch(url.toString(), requestOptions)
-          .then((response) => response.json())
+      fetch(fullUrl, requestOptions)
+          .then(async (response) => {
+            if (!response.ok) {
+              const errorText = await response.text();
+              throw new Error(`HTTP error! Status: ${response.status}, Text: ${errorText}`);
+            }
+            return response.json();
+          })
           .then((result) => {
             console.log('result: ' + result);
             if (process.env.SMS_ACTIVATE_DEBUG)
@@ -71,4 +72,5 @@ export class Query {
           });
     });
   }
+
 }
