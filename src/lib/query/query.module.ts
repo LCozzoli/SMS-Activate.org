@@ -38,10 +38,12 @@ export class Query {
         axiosConfig.proxy = {
           host: this.proxy.ip,
           port: this.proxy.port,
-          auth: {
-            username: this.proxy.username,
-            password: this.proxy.password,
-          },
+          auth: this.proxy.username && this.proxy.password
+              ? {
+                username: this.proxy.username,
+                password: this.proxy.password,
+              }
+              : undefined,
           protocol: this.proxy.protocol,
         };
       }
