@@ -56,6 +56,7 @@ export class Query {
           })
           .catch((error) => {
             console.log('err ' + error.toString());
+            console.log('action ' + EApiActions[action]);
             if (process.env.SMS_ACTIVATE_DEBUG) console.error('Catch |', error);
             reject(error);
           });
