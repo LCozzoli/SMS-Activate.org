@@ -19,7 +19,7 @@ export declare class getNumberV2 {
      * @param options.ref * Referral ID as string
      * @returns Phone number as string
      * */
-    getNumberV2(options: any): Promise<SMSNumber>;
+    getNumberV2(options: IGetNumberOptions): Promise<SMSNumber>;
     getNumber(options: IGetNumberOptions): Promise<SMSNumber>;
 }
 //# sourceMappingURL=getNumberV2.d.ts.map

@@ -19,7 +19,7 @@ export class Query {
 
   makeCall(
       action: EApiActions,
-      query?: Record<string, string | number | boolean>
+      query?: {}
   ): Promise<any> {
     query = query || {};
 

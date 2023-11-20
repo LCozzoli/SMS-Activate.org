@@ -25,7 +25,7 @@ export class getNumberV2 {
    * @returns Phone number as string
    * */
 
-  async getNumberV2(options: any): Promise<SMSNumber> {
+  async getNumberV2(options: IGetNumberOptions): Promise<SMSNumber> {
     if (options.phoneException) options.phoneException = '1';
     // if (typeof options.country == 'string')
     //   options.country = await this.countries?.toNumber(options.country);

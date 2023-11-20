@@ -3,47 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fb51ba16-6605-4812-9bf0-0ee9061f7772" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/index.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/index.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/index.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getMultiServiceNumber.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getMultiServiceNumber.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getMultiServiceNumber.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getMultiServiceNumber.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getMultiServiceNumber.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getMultiServiceNumber.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getMultiServiceNumber.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getMultiServiceNumber.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getNumberV2.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getNumberV2.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getNumberV2.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getNumberV2.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getNumberV2.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getNumberV2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getNumberV2.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getNumberV2.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getPrices.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getPrices.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getPrices.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getPrices.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getPrices.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getPrices.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getPrices.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/activations/routes/getPrices.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentNumber.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentNumber.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentNumber.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentNumber.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentNumber.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentNumber.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentNumber.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentNumber.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentServicesAndCountries.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentServicesAndCountries.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentServicesAndCountries.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentServicesAndCountries.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentServicesAndCountries.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentServicesAndCountries.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentServicesAndCountries.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/rental/routes/getRentServicesAndCountries.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/utils/countries.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/utils/countries.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/utils/countries.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/utils/countries.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/utils/countries.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/utils/countries.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/utils/countries.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/utils/countries.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/utils/utils.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/utils/utils.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/utils/utils.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/utils/utils.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/utils/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/lib/parts/utils/utils.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/lib/parts/utils/utils.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/parts/activations/routes/getMultiServiceNumber.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/activations/routes/getMultiServiceNumber.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/parts/activations/routes/getNumberV2.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/activations/routes/getNumberV2.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/parts/activations/routes/getPrices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/activations/routes/getPrices.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/parts/rental/routes/getRentNumber.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/rental/routes/getRentNumber.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/parts/rental/routes/getRentServicesAndCountries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/rental/routes/getRentServicesAndCountries.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/parts/utils/countries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/utils/countries.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/parts/utils/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/parts/utils/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ressources/comon.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ressources/comon.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
