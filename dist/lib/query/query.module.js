@@ -22,7 +22,7 @@ exports.Query = void 0;
 const comon_1 = require("../../ressources/comon");
 const tsyringe_1 = require("tsyringe");
 const errors_1 = require("../../ressources/errors");
-const node_fetch_1 = __importDefault(require("node-fetch"));
+const axios_1 = __importDefault(require("axios"));
 const https_proxy_agent_1 = require("https-proxy-agent");
 let Query = class Query {
     setApiKey(baseUrl, apiKey, proxy) {
@@ -36,36 +36,35 @@ let Query = class Query {
         query = query || {};
         if (process.env.SMS_ACTIVATE_DEBUG)
             console.log('Call >', comon_1.EApiActions[action], query);
-        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+        return new Promise((resolve, reject) => {
             if (!this.apiKey)
                 return reject(new Error(errors_1.RequestErrors.MissingApiKey));
-            const queryParams = new URLSearchParams(Object.assign({ api_key: this.apiKey, action: comon_1.EApiActions[action] }, query));
-            const url = `${this.baseUrl}?${queryParams.toString()}`;
-            const requestOptions = {
-                method: 'GET',
+            const axiosConfig = {
+                params: Object.assign({ api_key: this.apiKey, action: comon_1.EApiActions[action] }, query),
             };
             if (this.proxy) {
                 console.log('proxy passed');
                 const proxyUrl = `${this.proxy.protocol}://${this.proxy.ip}:${this.proxy.port}`;
-                requestOptions.agent = new https_proxy_agent_1.HttpsProxyAgent(proxyUrl);
+                const agent = new https_proxy_agent_1.HttpsProxyAgent(proxyUrl);
+                axiosConfig.httpsAgent = agent;
             }
-            try {
-                const response = yield (0, node_fetch_1.default)(url, requestOptions);
-                const body = yield response.text();
-                console.log('result: ' + body);
+            axios_1.default
+                .get(this.baseUrl, axiosConfig)
+                .then((result) => {
+                console.log('result: ' + result);
                 if (process.env.SMS_ACTIVATE_DEBUG)
-                    console.debug('Success |', body);
-                if (typeof body === 'string' && errors_1.EApiErrors[body])
-                    return reject(new Error(errors_1.EApiErrors[body]));
-                resolve(body);
-            }
-            catch (error) {
+                    console.debug('Success |', result.data);
+                if (typeof result.data == 'string' && errors_1.EApiErrors[result.data])
+                    return reject(new Error(errors_1.EApiErrors[result.data]));
+                resolve(result.data);
+            })
+                .catch((error) => {
                 console.log('err ' + error.toString());
                 if (process.env.SMS_ACTIVATE_DEBUG)
                     console.error('Catch |', error);
                 reject(error);
-            }
-        }));
+            });
+        });
     }
 };
 exports.Query = Query;

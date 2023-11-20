@@ -1,5 +1,5 @@
 import { EApiActions } from '../../ressources/comon';
-import { IProxyOptions } from '../../ressources/options';
+import { IProxyOptions } from "../../ressources/options";
 export declare class Query {
     private baseUrl;
     private apiKey;
