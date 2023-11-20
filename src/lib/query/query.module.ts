@@ -1,9 +1,9 @@
 import { BASE_URL, EApiActions } from '../../ressources/comon';
 import { singleton } from 'tsyringe';
 import { EApiErrors, RequestErrors } from '../../ressources/errors';
-import { IProxyOptions } from "../../ressources/options";
-import fetch, { RequestInit } from 'node-fetch';
-import { HttpsProxyAgent } from 'https-proxy-agent';
+import { IProxyOptions } from '../../ressources/options';
+import fetch from 'node-fetch';
+import {HttpsProxyAgent} from 'https-proxy-agent';
 
 @singleton()
 export class Query {
@@ -26,51 +26,47 @@ export class Query {
     if (process.env.SMS_ACTIVATE_DEBUG)
       console.log('Call >', EApiActions[action], query);
 
-    return new Promise<any>((resolve, reject) => {
+    return new Promise<any>(async (resolve, reject) => {
       if (!this.apiKey) return reject(new Error(RequestErrors.MissingApiKey));
 
-      const url = `${this.baseUrl}?api_key=${this.apiKey}&action=${EApiActions[action]}`;
-      const params = new URLSearchParams();
+      const queryParams = new URLSearchParams({
+        api_key: this.apiKey,
+        action: EApiActions[action],
+        ...query,
+      });
 
-      for (const key in query) {
-        if (query.hasOwnProperty(key)) {
-          params.append(key, String(query[key]));
-        }
-      }
+      const url = `${this.baseUrl}?${queryParams.toString()}`;
 
-      const fullUrl = `${url}&${params.toString()}`;
-
-      const requestOptions: RequestInit = {};
+      const requestOptions: any = {
+        method: 'GET',
+      };
 
       if (this.proxy) {
         console.log('proxy passed');
         const proxyUrl = `${this.proxy.protocol}://${this.proxy.ip}:${this.proxy.port}`;
-        const agent = new HttpsProxyAgent(proxyUrl);
-        requestOptions.agent = agent;
+        requestOptions.agent = new HttpsProxyAgent(proxyUrl);
       }
 
-      fetch(fullUrl, requestOptions)
-          .then(async (response) => {
-            if (!response.ok) {
-              const errorText = await response.text();
-              throw new Error(`HTTP error! Status: ${response.status}, Text: ${errorText}`);
-            }
-            return response.json();
-          })
-          .then((result) => {
-            console.log('result: ' + result);
-            if (process.env.SMS_ACTIVATE_DEBUG)
-              console.debug('Success |', result);
-            if (typeof result === 'string' && EApiErrors[result])
-              return reject(new Error(EApiErrors[result]));
-            resolve(result);
-          })
-          .catch((error) => {
-            console.log('err ' + error.toString());
-            if (process.env.SMS_ACTIVATE_DEBUG) console.error('Catch |', error);
-            reject(error);
-          });
+      try {
+        const response = await fetch(url, requestOptions);
+        const body = await response.text();
+
+        console.log('result: ' + body);
+
+        if (process.env.SMS_ACTIVATE_DEBUG)
+          console.debug('Success |', body);
+
+        if (typeof body === 'string' && EApiErrors[body])
+          return reject(new Error(EApiErrors[body]));
+
+        resolve(body);
+      } catch (error) {
+        console.log('err ' + error.toString());
+
+        if (process.env.SMS_ACTIVATE_DEBUG) console.error('Catch |', error);
+
+        reject(error);
+      }
     });
   }
-
 }
