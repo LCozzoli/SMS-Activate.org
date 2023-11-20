@@ -2,8 +2,7 @@ import { BASE_URL, EApiActions } from '../../ressources/comon';
 import { singleton } from 'tsyringe';
 import { EApiErrors, RequestErrors } from '../../ressources/errors';
 import {IProxyOptions} from "../../ressources/options";
-import axios, { AxiosRequestConfig } from 'axios';
-import {HttpsProxyAgent} from 'https-proxy-agent';
+import * as http from 'http';
 
 @singleton()
 export class Query {
@@ -18,45 +17,64 @@ export class Query {
   }
 
   makeCall(
-    action: EApiActions,
-    query?: Record<string, string | number | boolean>
-  ): any {
+      action: EApiActions,
+      query?: Record<string, string | number | boolean>
+  ): Promise<any> {
     query = query || {};
 
     if (process.env.SMS_ACTIVATE_DEBUG)
       console.log('Call >', EApiActions[action], query);
+
     return new Promise<any>((resolve, reject) => {
       if (!this.apiKey) return reject(new Error(RequestErrors.MissingApiKey));
-      const axiosConfig: AxiosRequestConfig = {
-        params: {
-          api_key: this.apiKey,
-          action: EApiActions[action],
-          ...query,
+
+      const queryParams = new URLSearchParams({
+        api_key: this.apiKey,
+        action: EApiActions[action],
+        ...query,
+      });
+
+      const requestOptions: http.RequestOptions = {
+        method: 'GET',
+        host: this.proxy ? this.proxy.ip : this.baseUrl,
+        port: this.proxy ? this.proxy.port : 80,
+        path: this.proxy ? this.baseUrl + '?' + queryParams : `/?${queryParams}`,
+        headers: {
+          'Content-Type': 'application/json',
         },
       };
 
-      if (this.proxy) {
-        console.log('proxy passed');
-        const proxyUrl = `${this.proxy.protocol}://${this.proxy.ip}:${this.proxy.port}`;
-        const agent = new HttpsProxyAgent(proxyUrl);
-        axiosConfig.httpsAgent = agent;
+      if (this.proxy && this.proxy.username && this.proxy.password) {
+        requestOptions.headers['Proxy-Authorization'] = 'Basic ' +
+            Buffer.from(`${this.proxy.username}:${this.proxy.password}`).toString('base64');
       }
 
-      axios
-        .get(this.baseUrl, axiosConfig)
-        .then((result) => {
-          console.log('result: ' + result);
-          if (process.env.SMS_ACTIVATE_DEBUG)
-            console.debug('Success |', result.data);
-          if (typeof result.data == 'string' && EApiErrors[result.data])
-            return reject(new Error(EApiErrors[result.data]));
-          resolve(result.data);
-        })
-        .catch((error) => {
-          console.log('err ' + error.toString());
-          if (process.env.SMS_ACTIVATE_DEBUG) console.error('Catch |', error);
-          reject(error);
+      const request = http.request(requestOptions, (response) => {
+        let data = '';
+
+        response.on('data', (chunk) => {
+          data += chunk;
         });
+
+        response.on('end', () => {
+          console.log('result: ' + data);
+          if (process.env.SMS_ACTIVATE_DEBUG)
+            console.debug('Success |', data);
+
+          if (typeof data === 'string' && EApiErrors[data])
+            return reject(new Error(EApiErrors[data]));
+
+          resolve(JSON.parse(data));
+        });
+      });
+
+      request.on('error', (error) => {
+        console.log('err ' + error.toString());
+        if (process.env.SMS_ACTIVATE_DEBUG) console.error('Catch |', error);
+        reject(error);
+      });
+
+      request.end();
     });
   }
 }
