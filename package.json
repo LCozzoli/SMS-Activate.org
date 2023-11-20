@@ -17,6 +17,7 @@
     "axios": "^0.27.2",
     "dotenv": "^16.0.3",
     "https-proxy-agent": "^7.0.2",
+    "node-fetch": "^3.3.2",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.7.0",
     "typescript": "^4.8.2",

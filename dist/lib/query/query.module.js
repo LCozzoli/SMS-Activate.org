@@ -22,7 +22,7 @@ exports.Query = void 0;
 const comon_1 = require("../../ressources/comon");
 const tsyringe_1 = require("tsyringe");
 const errors_1 = require("../../ressources/errors");
-const axios_1 = __importDefault(require("axios"));
+const node_fetch_1 = __importDefault(require("node-fetch"));
 const https_proxy_agent_1 = require("https-proxy-agent");
 let Query = class Query {
     setApiKey(baseUrl, apiKey, proxy) {
@@ -39,24 +39,33 @@ let Query = class Query {
         return new Promise((resolve, reject) => {
             if (!this.apiKey)
                 return reject(new Error(errors_1.RequestErrors.MissingApiKey));
-            const axiosConfig = {
-                params: Object.assign({ api_key: this.apiKey, action: comon_1.EApiActions[action] }, query),
+            const requestOptions = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             };
+            const url = new URL(this.baseUrl);
+            url.searchParams.append('api_key', this.apiKey);
+            url.searchParams.append('action', comon_1.EApiActions[action]);
+            Object.keys(query).forEach((key) => {
+                url.searchParams.append(key, query[key].toString());
+            });
             if (this.proxy) {
                 console.log('proxy passed');
                 const proxyUrl = `${this.proxy.protocol}://${this.proxy.ip}:${this.proxy.port}`;
                 const agent = new https_proxy_agent_1.HttpsProxyAgent(proxyUrl);
-                axiosConfig.httpsAgent = agent;
+                requestOptions.agent = agent;
             }
-            axios_1.default
-                .get(this.baseUrl, axiosConfig)
+            (0, node_fetch_1.default)(url.toString(), requestOptions)
+                .then((response) => response.json())
                 .then((result) => {
                 console.log('result: ' + result);
                 if (process.env.SMS_ACTIVATE_DEBUG)
-                    console.debug('Success |', result.data);
-                if (typeof result.data == 'string' && errors_1.EApiErrors[result.data])
-                    return reject(new Error(errors_1.EApiErrors[result.data]));
-                resolve(result.data);
+                    console.debug('Success |', result);
+                if (typeof result === 'string' && errors_1.EApiErrors[result])
+                    return reject(new Error(errors_1.EApiErrors[result]));
+                resolve(result);
             })
                 .catch((error) => {
                 console.log('err ' + error.toString());
