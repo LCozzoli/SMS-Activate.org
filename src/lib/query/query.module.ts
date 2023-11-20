@@ -47,6 +47,7 @@ export class Query {
               : undefined,
           protocol: this.proxy.protocol,
         };
+        console.log(axiosConfig)
       }
 
       axios
