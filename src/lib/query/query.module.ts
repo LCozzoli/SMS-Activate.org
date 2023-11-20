@@ -38,7 +38,6 @@ export class Query {
       };
 
       if (this.proxy) {
-        console.log('proxy passed');
         const proxyUrl = `${this.proxy.protocol}://${this.proxy.ip}:${this.proxy.port}`;
         const agent = new HttpsProxyAgent(proxyUrl);
         axiosConfig.httpsAgent = agent;

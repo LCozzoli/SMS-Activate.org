@@ -43,7 +43,6 @@ let Query = class Query {
                 params: Object.assign({ api_key: this.apiKey, action: comon_1.EApiActions[action] }, query),
             };
             if (this.proxy) {
-                console.log('proxy passed');
                 const proxyUrl = `${this.proxy.protocol}://${this.proxy.ip}:${this.proxy.port}`;
                 const agent = new https_proxy_agent_1.HttpsProxyAgent(proxyUrl);
                 axiosConfig.httpsAgent = agent;
