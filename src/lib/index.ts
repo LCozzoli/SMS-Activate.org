@@ -9,12 +9,20 @@ import { Services } from './parts/utils/services';
 
 interface Base extends Activations, Rental {}
 
+interface ProxyInfo {
+  username: string;
+  password: string;
+  ip: string;
+  protocol: string;
+}
+
 @autoInjectable()
 class Base {
   @use(Activations, Rental) this;
   constructor(
     public baseUrl: string,
     public apiKey?: string,
+    public proxy?: ProxyInfo,
     public query?: Query,
     public countries?: Countries,
     public services?: Services,
@@ -27,7 +35,7 @@ class Base {
 export class SMSActivate extends Base {
   public utils: Utils;
 
-  constructor(baseUrl: string, apiKey?: string) {
-    super(baseUrl,apiKey);
+  constructor(baseUrl: string, apiKey?: string, proxy?: ProxyInfo) {
+    super(baseUrl,apiKey, proxy);
   }
 }

@@ -6,19 +6,26 @@ import { Query } from './query/query.module';
 import { Services } from './parts/utils/services';
 interface Base extends Activations, Rental {
 }
+interface ProxyInfo {
+    username: string;
+    password: string;
+    ip: string;
+    protocol: string;
+}
 declare class Base {
     baseUrl: string;
     apiKey?: string;
+    proxy?: ProxyInfo;
     query?: Query;
     countries?: Countries;
     services?: Services;
     utils?: Utils;
     this: any;
-    constructor(baseUrl: string, apiKey?: string, query?: Query, countries?: Countries, services?: Services, utils?: Utils);
+    constructor(baseUrl: string, apiKey?: string, proxy?: ProxyInfo, query?: Query, countries?: Countries, services?: Services, utils?: Utils);
 }
 export declare class SMSActivate extends Base {
     utils: Utils;
-    constructor(baseUrl: string, apiKey?: string);
+    constructor(baseUrl: string, apiKey?: string, proxy?: ProxyInfo);
 }
 export {};
 //# sourceMappingURL=index.d.ts.map

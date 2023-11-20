@@ -24,10 +24,11 @@ const tsyringe_1 = require("tsyringe");
 const axios_1 = __importDefault(require("axios"));
 const errors_1 = require("../../ressources/errors");
 let Query = class Query {
-    setApiKey(baseUrl, apiKey) {
+    setApiKey(baseUrl, apiKey, proxy) {
         return __awaiter(this, void 0, void 0, function* () {
             this.apiKey = apiKey || process.env.SMS_ACTIVATE_API_KEY;
             this.baseUrl = baseUrl;
+            this.proxy = proxy;
         });
     }
     makeCall(action, query) {
@@ -37,11 +38,22 @@ let Query = class Query {
         return new Promise((resolve, reject) => {
             if (!this.apiKey)
                 return reject(new Error(errors_1.RequestErrors.MissingApiKey));
-            const params = new URLSearchParams(Object.assign({ api_key: this.apiKey, action: comon_1.EApiActions[action] }, query));
+            const axiosConfig = {
+                params: Object.assign({ api_key: this.apiKey, action: comon_1.EApiActions[action] }, query),
+            };
+            if (this.proxy) {
+                axiosConfig.proxy = {
+                    host: this.proxy.ip,
+                    port: this.proxy.port,
+                    auth: {
+                        username: this.proxy.username,
+                        password: this.proxy.password,
+                    },
+                    protocol: this.proxy.protocol,
+                };
+            }
             axios_1.default
-                .get(this.baseUrl, {
-                params,
-            })
+                .get(this.baseUrl, axiosConfig)
                 .then((result) => {
                 if (process.env.SMS_ACTIVATE_DEBUG)
                     console.debug('Success |', result.data);

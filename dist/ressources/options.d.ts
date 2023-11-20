@@ -2,9 +2,17 @@ import { EActivationSetStatus, ERentalSatus } from './status';
 export interface IBasicID extends Record<string, string | number> {
     id: string | number;
 }
-export interface IGetNumberOptions extends Record<string, string | number | boolean> {
+export interface IProxyOptions {
+    protocol: string;
+    ip: string;
+    port: number;
+    username?: string;
+    password?: string;
+}
+export interface IGetNumberOptions {
     service: string;
     country: number | string;
+    proxy?: IProxyOptions;
     forward?: string;
     freePrice?: number;
     maxPrice?: number;

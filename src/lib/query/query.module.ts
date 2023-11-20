@@ -1,16 +1,19 @@
 import { BASE_URL, EApiActions } from '../../ressources/comon';
 import { singleton } from 'tsyringe';
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { EApiErrors, RequestErrors } from '../../ressources/errors';
+import {IProxyOptions} from "../../ressources/options";
 
 @singleton()
 export class Query {
   private baseUrl: string;
   private apiKey: string | null;
+  private proxy: IProxyOptions;
 
-  async setApiKey(baseUrl: string, apiKey?: string) {
+  async setApiKey(baseUrl: string, apiKey?: string, proxy?: IProxyOptions) {
     this.apiKey = apiKey || process.env.SMS_ACTIVATE_API_KEY;
     this.baseUrl = baseUrl;
+    this.proxy = proxy;
   }
 
   makeCall(
@@ -23,15 +26,28 @@ export class Query {
       console.log('Call >', EApiActions[action], query);
     return new Promise<any>((resolve, reject) => {
       if (!this.apiKey) return reject(new Error(RequestErrors.MissingApiKey));
-      const params = new URLSearchParams({
-        api_key: this.apiKey,
-        action: EApiActions[action],
-        ...query,
-      });
+      const axiosConfig: AxiosRequestConfig = {
+        params: {
+          api_key: this.apiKey,
+          action: EApiActions[action],
+          ...query,
+        },
+      };
+
+      if (this.proxy) {
+        axiosConfig.proxy = {
+          host: this.proxy.ip,
+          port: this.proxy.port,
+          auth: {
+            username: this.proxy.username,
+            password: this.proxy.password,
+          },
+          protocol: this.proxy.protocol,
+        };
+      }
+
       axios
-        .get(this.baseUrl, {
-          params,
-        })
+        .get(this.baseUrl, axiosConfig)
         .then((result) => {
           if (process.env.SMS_ACTIVATE_DEBUG)
             console.debug('Success |', result.data);

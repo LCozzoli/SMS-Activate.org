@@ -19,9 +19,10 @@ const countries_1 = require("./parts/utils/countries");
 const query_module_1 = require("./query/query.module");
 const services_1 = require("./parts/utils/services");
 let Base = class Base {
-    constructor(baseUrl, apiKey, query, countries, services, utils) {
+    constructor(baseUrl, apiKey, proxy, query, countries, services, utils) {
         this.baseUrl = baseUrl;
         this.apiKey = apiKey;
+        this.proxy = proxy;
         this.query = query;
         this.countries = countries;
         this.services = services;
@@ -35,14 +36,14 @@ __decorate([
 ], Base.prototype, "this", void 0);
 Base = __decorate([
     (0, tsyringe_1.autoInjectable)(),
-    __metadata("design:paramtypes", [String, String, query_module_1.Query,
+    __metadata("design:paramtypes", [String, String, Object, query_module_1.Query,
         countries_1.Countries,
         services_1.Services,
         utils_1.Utils])
 ], Base);
 class SMSActivate extends Base {
-    constructor(baseUrl, apiKey) {
-        super(baseUrl, apiKey);
+    constructor(baseUrl, apiKey, proxy) {
+        super(baseUrl, apiKey, proxy);
     }
 }
 exports.SMSActivate = SMSActivate;
