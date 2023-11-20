@@ -2,7 +2,7 @@ import { BASE_URL, EApiActions } from '../../ressources/comon';
 import { singleton } from 'tsyringe';
 import { EApiErrors, RequestErrors } from '../../ressources/errors';
 import {IProxyOptions} from "../../ressources/options";
-import fetch, { RequestInit } from 'node-fetch';
+import { RequestInit } from 'node-fetch';
 import {HttpsProxyAgent} from 'https-proxy-agent';
 
 @singleton()
@@ -26,7 +26,7 @@ export class Query {
     if (process.env.SMS_ACTIVATE_DEBUG)
       console.log('Call >', EApiActions[action], query);
 
-    return new Promise<any>((resolve, reject) => {
+    return new Promise<any>(async (resolve, reject) => {
       if (!this.apiKey) return reject(new Error(RequestErrors.MissingApiKey));
 
       const requestOptions: RequestInit = {
@@ -47,9 +47,12 @@ export class Query {
       if (this.proxy) {
         console.log('proxy passed');
         const proxyUrl = `${this.proxy.protocol}://${this.proxy.ip}:${this.proxy.port}`;
+        const { HttpsProxyAgent } = await import('https-proxy-agent');
         const agent = new HttpsProxyAgent(proxyUrl);
         requestOptions.agent = agent;
       }
+
+      const fetch = (await import('node-fetch')).default;
 
       fetch(url.toString(), requestOptions)
           .then((response) => response.json())
