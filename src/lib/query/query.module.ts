@@ -1,8 +1,9 @@
 import { BASE_URL, EApiActions } from '../../ressources/comon';
 import { singleton } from 'tsyringe';
-import axios, { AxiosRequestConfig } from 'axios';
 import { EApiErrors, RequestErrors } from '../../ressources/errors';
 import {IProxyOptions} from "../../ressources/options";
+import axios, { AxiosRequestConfig } from 'axios';
+import {HttpsProxyAgent} from 'https-proxy-agent';
 
 @singleton()
 export class Query {
@@ -35,25 +36,16 @@ export class Query {
       };
 
       if (this.proxy) {
-        console.log('proxy passed')
-        axiosConfig.proxy = {
-          host: this.proxy.ip,
-          port: this.proxy.port,
-          auth: this.proxy.username && this.proxy.password
-              ? {
-                username: this.proxy.username,
-                password: this.proxy.password,
-              }
-              : undefined,
-          protocol: this.proxy.protocol,
-        };
-        console.log(axiosConfig)
+        console.log('proxy passed');
+        const proxyUrl = `${this.proxy.protocol}://${this.proxy.ip}:${this.proxy.port}`;
+        const agent = new HttpsProxyAgent(proxyUrl);
+        axiosConfig.httpsAgent = agent;
       }
 
       axios
         .get(this.baseUrl, axiosConfig)
         .then((result) => {
-          console.log('result: ' + result)
+          console.log('result: ' + result);
           if (process.env.SMS_ACTIVATE_DEBUG)
             console.debug('Success |', result.data);
           if (typeof result.data == 'string' && EApiErrors[result.data])
@@ -61,7 +53,7 @@ export class Query {
           resolve(result.data);
         })
         .catch((error) => {
-          console.log('err ' + error.toString())
+          console.log('err ' + error.toString());
           if (process.env.SMS_ACTIVATE_DEBUG) console.error('Catch |', error);
           reject(error);
         });

@@ -21,8 +21,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Query = void 0;
 const comon_1 = require("../../ressources/comon");
 const tsyringe_1 = require("tsyringe");
-const axios_1 = __importDefault(require("axios"));
 const errors_1 = require("../../ressources/errors");
+const axios_1 = __importDefault(require("axios"));
+const https_proxy_agent_1 = require("https-proxy-agent");
 let Query = class Query {
     setApiKey(baseUrl, apiKey, proxy) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -43,18 +44,9 @@ let Query = class Query {
             };
             if (this.proxy) {
                 console.log('proxy passed');
-                axiosConfig.proxy = {
-                    host: this.proxy.ip,
-                    port: this.proxy.port,
-                    auth: this.proxy.username && this.proxy.password
-                        ? {
-                            username: this.proxy.username,
-                            password: this.proxy.password,
-                        }
-                        : undefined,
-                    protocol: this.proxy.protocol,
-                };
-                console.log(axiosConfig);
+                const proxyUrl = `${this.proxy.protocol}://${this.proxy.ip}:${this.proxy.port}`;
+                const agent = new https_proxy_agent_1.HttpsProxyAgent(proxyUrl);
+                axiosConfig.httpsAgent = agent;
             }
             axios_1.default
                 .get(this.baseUrl, axiosConfig)
