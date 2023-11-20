@@ -9,6 +9,7 @@ export enum EApiActions {
   getOperators,
   getActiveActivations,
   getNumber,
+  getNumberV2,
   getMultiServiceNumber,
   setStatus,
   getStatus,

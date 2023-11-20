@@ -57,7 +57,6 @@ let Query = class Query {
                 resolve(result.data);
             })
                 .catch((error) => {
-                console.log('action ' + comon_1.EApiActions[action]);
                 if (process.env.SMS_ACTIVATE_DEBUG)
                     console.error('Catch |', error);
                 reject(error);
