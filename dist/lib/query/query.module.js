@@ -36,47 +36,36 @@ let Query = class Query {
         query = query || {};
         if (process.env.SMS_ACTIVATE_DEBUG)
             console.log('Call >', comon_1.EApiActions[action], query);
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             if (!this.apiKey)
                 return reject(new Error(errors_1.RequestErrors.MissingApiKey));
-            const url = `${this.baseUrl}?api_key=${this.apiKey}&action=${comon_1.EApiActions[action]}`;
-            const params = new URLSearchParams();
-            for (const key in query) {
-                if (query.hasOwnProperty(key)) {
-                    params.append(key, String(query[key]));
-                }
-            }
-            const fullUrl = `${url}&${params.toString()}`;
-            const requestOptions = {};
+            const queryParams = new URLSearchParams(Object.assign({ api_key: this.apiKey, action: comon_1.EApiActions[action] }, query));
+            const url = `${this.baseUrl}?${queryParams.toString()}`;
+            const requestOptions = {
+                method: 'GET',
+            };
             if (this.proxy) {
                 console.log('proxy passed');
                 const proxyUrl = `${this.proxy.protocol}://${this.proxy.ip}:${this.proxy.port}`;
-                const agent = new https_proxy_agent_1.HttpsProxyAgent(proxyUrl);
-                requestOptions.agent = agent;
+                requestOptions.agent = new https_proxy_agent_1.HttpsProxyAgent(proxyUrl);
             }
-            (0, node_fetch_1.default)(fullUrl, requestOptions)
-                .then((response) => __awaiter(this, void 0, void 0, function* () {
-                if (!response.ok) {
-                    const errorText = yield response.text();
-                    throw new Error(`HTTP error! Status: ${response.status}, Text: ${errorText}`);
-                }
-                return response.json();
-            }))
-                .then((result) => {
-                console.log('result: ' + result);
+            try {
+                const response = yield (0, node_fetch_1.default)(url, requestOptions);
+                const body = yield response.text();
+                console.log('result: ' + body);
                 if (process.env.SMS_ACTIVATE_DEBUG)
-                    console.debug('Success |', result);
-                if (typeof result === 'string' && errors_1.EApiErrors[result])
-                    return reject(new Error(errors_1.EApiErrors[result]));
-                resolve(result);
-            })
-                .catch((error) => {
+                    console.debug('Success |', body);
+                if (typeof body === 'string' && errors_1.EApiErrors[body])
+                    return reject(new Error(errors_1.EApiErrors[body]));
+                resolve(body);
+            }
+            catch (error) {
                 console.log('err ' + error.toString());
                 if (process.env.SMS_ACTIVATE_DEBUG)
                     console.error('Catch |', error);
                 reject(error);
-            });
-        });
+            }
+        }));
     }
 };
 exports.Query = Query;
