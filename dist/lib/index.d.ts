@@ -7,10 +7,11 @@ import { Services } from './parts/utils/services';
 interface Base extends Activations, Rental {
 }
 interface ProxyInfo {
-    username: string;
-    password: string;
-    ip: string;
     protocol: string;
+    ip: string;
+    port: number;
+    username?: string;
+    password?: string;
 }
 declare class Base {
     baseUrl: string;
