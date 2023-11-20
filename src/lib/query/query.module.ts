@@ -55,6 +55,7 @@ export class Query {
             resolve(result.data);
           })
           .catch((error) => {
+            console.log('err: ' + JSON.parse(JSON.stringify(error)))
             console.log('action ' + EApiActions[action]);
             if (process.env.SMS_ACTIVATE_DEBUG) console.error('Catch |', error);
             reject(error);
