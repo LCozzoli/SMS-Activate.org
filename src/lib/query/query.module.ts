@@ -47,7 +47,7 @@ export class Query {
           protocol: this.proxy.protocol,
         };
       }
-
+      console.log(axiosConfig)
       axios
         .get(this.baseUrl, axiosConfig)
         .then((result) => {

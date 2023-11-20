@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb51ba16-6605-4812-9bf0-0ee9061f7772" name="Changes" comment="" />
+    <list default="true" id="fb51ba16-6605-4812-9bf0-0ee9061f7772" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/lib/query/query.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/query/query.module.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +48,7 @@
       <workItem from="1699901754440" duration="5428000" />
       <workItem from="1700086347902" duration="1085000" />
       <workItem from="1700417238571" duration="14000" />
-      <workItem from="1700485576828" duration="3762000" />
+      <workItem from="1700485576828" duration="4046000" />
     </task>
     <servers />
   </component>
