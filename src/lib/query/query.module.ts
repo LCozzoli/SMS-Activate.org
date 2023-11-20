@@ -53,6 +53,7 @@ export class Query {
       axios
         .get(this.baseUrl, axiosConfig)
         .then((result) => {
+          console.log('result: ' + result)
           if (process.env.SMS_ACTIVATE_DEBUG)
             console.debug('Success |', result.data);
           if (typeof result.data == 'string' && EApiErrors[result.data])
@@ -60,6 +61,7 @@ export class Query {
           resolve(result.data);
         })
         .catch((error) => {
+          console.log('err ' + error.toString())
           if (process.env.SMS_ACTIVATE_DEBUG) console.error('Catch |', error);
           reject(error);
         });
