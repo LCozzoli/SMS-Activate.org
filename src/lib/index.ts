@@ -29,7 +29,7 @@ class Base {
     public services?: Services,
     public utils?: Utils
   ) {
-    query?.setApiKey(baseUrl,apiKey);
+    query?.setApiKey(baseUrl,apiKey,proxy);
   }
 }
 

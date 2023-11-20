@@ -27,7 +27,7 @@ let Base = class Base {
         this.countries = countries;
         this.services = services;
         this.utils = utils;
-        query === null || query === void 0 ? void 0 : query.setApiKey(baseUrl, apiKey);
+        query === null || query === void 0 ? void 0 : query.setApiKey(baseUrl, apiKey, proxy);
     }
 };
 __decorate([
