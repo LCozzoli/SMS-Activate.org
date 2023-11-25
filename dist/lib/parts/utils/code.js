@@ -29,6 +29,7 @@ class waitForCode {
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
                 while (tries--) {
                     const result = yield this.getStatus(id);
+                    console.log('get code result ' + result);
                     if (result.message == status_1.EActivationGetStatusAnswer.STATUS_OK ||
                         result.message == status_1.EActivationGetStatusAnswer.STATUS_UNEXPECTED)
                         return resolve(result.data);

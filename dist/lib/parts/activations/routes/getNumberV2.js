@@ -41,6 +41,7 @@ class getNumberV2 {
             return new Promise((resolve, reject) => {
                 var _a;
                 (_a = this.query) === null || _a === void 0 ? void 0 : _a.makeCall(comon_1.EApiActions.getNumber, options).then((response) => {
+                    console.log("Get number response " + response);
                     if (typeof response == 'object') {
                         return resolve(new number_1.SMSNumber({
                             activationId: response.activationId,
