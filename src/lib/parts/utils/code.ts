@@ -22,7 +22,7 @@ export class waitForCode {
             return resolve(result.data);
           if (result.message != EActivationGetStatusAnswer.STATUS_WAIT_CODE)
             return reject(result.code);
-          await sleep(1000);
+          await sleep(1500);
         }
         reject('EXPIRED');
       } catch (error) {

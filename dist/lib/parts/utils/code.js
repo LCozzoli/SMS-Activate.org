@@ -35,7 +35,7 @@ class waitForCode {
                             return resolve(result.data);
                         if (result.message != status_1.EActivationGetStatusAnswer.STATUS_WAIT_CODE)
                             return reject(result.code);
-                        yield (0, helpers_1.sleep)(1000);
+                        yield (0, helpers_1.sleep)(1500);
                     }
                     reject('EXPIRED');
                 }
