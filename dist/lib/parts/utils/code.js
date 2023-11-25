@@ -30,6 +30,7 @@ class waitForCode {
                 try {
                     while (tries--) {
                         const result = yield this.getStatus(id);
+                        console.log(result);
                         if (result.message == status_1.EActivationGetStatusAnswer.STATUS_OK ||
                             result.message == status_1.EActivationGetStatusAnswer.STATUS_UNEXPECTED)
                             return resolve(result.data);
@@ -40,7 +41,6 @@ class waitForCode {
                     reject('EXPIRED');
                 }
                 catch (error) {
-                    console.error('Ошибка во время выполнения waitForCode:', error);
                     reject(error);
                 }
             }));
