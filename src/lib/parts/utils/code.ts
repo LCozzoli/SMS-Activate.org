@@ -12,19 +12,23 @@ export class waitForCode {
   @use(getStatus)
   async waitForCode(id: string | number, tries = 180): Promise<string> {
     return new Promise<string>(async (resolve, reject) => {
-      while (tries--) {
-        const result = await this.getStatus(id);
-        console.log('get code result ' + result)
-        if (
-          result.message == EActivationGetStatusAnswer.STATUS_OK ||
-          result.message == EActivationGetStatusAnswer.STATUS_UNEXPECTED
-        )
-          return resolve(result.data);
-        if (result.message != EActivationGetStatusAnswer.STATUS_WAIT_CODE)
-          return reject(result.code);
-        await sleep(1000);
+      try {
+        while (tries--) {
+          const result = await this.getStatus(id);
+          if (
+              result.message == EActivationGetStatusAnswer.STATUS_OK ||
+              result.message == EActivationGetStatusAnswer.STATUS_UNEXPECTED
+          )
+            return resolve(result.data);
+          if (result.message != EActivationGetStatusAnswer.STATUS_WAIT_CODE)
+            return reject(result.code);
+          await sleep(1000);
+        }
+        reject('EXPIRED');
+      } catch (error) {
+        console.error('Ошибка во время выполнения waitForCode:', error);
+        reject(error);
       }
-      reject('EXPIRED');
     });
   }
 }

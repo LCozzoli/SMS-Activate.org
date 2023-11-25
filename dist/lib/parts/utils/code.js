@@ -27,17 +27,22 @@ class waitForCode {
     waitForCode(id, tries = 180) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-                while (tries--) {
-                    const result = yield this.getStatus(id);
-                    console.log('get code result ' + result);
-                    if (result.message == status_1.EActivationGetStatusAnswer.STATUS_OK ||
-                        result.message == status_1.EActivationGetStatusAnswer.STATUS_UNEXPECTED)
-                        return resolve(result.data);
-                    if (result.message != status_1.EActivationGetStatusAnswer.STATUS_WAIT_CODE)
-                        return reject(result.code);
-                    yield (0, helpers_1.sleep)(1000);
+                try {
+                    while (tries--) {
+                        const result = yield this.getStatus(id);
+                        if (result.message == status_1.EActivationGetStatusAnswer.STATUS_OK ||
+                            result.message == status_1.EActivationGetStatusAnswer.STATUS_UNEXPECTED)
+                            return resolve(result.data);
+                        if (result.message != status_1.EActivationGetStatusAnswer.STATUS_WAIT_CODE)
+                            return reject(result.code);
+                        yield (0, helpers_1.sleep)(1000);
+                    }
+                    reject('EXPIRED');
                 }
-                reject('EXPIRED');
+                catch (error) {
+                    console.error('Ошибка во время выполнения waitForCode:', error);
+                    reject(error);
+                }
             }));
         });
     }
