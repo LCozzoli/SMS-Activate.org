@@ -14,6 +14,7 @@ export class waitForCode {
     return new Promise<string>(async (resolve, reject) => {
       while (tries--) {
         const result = await this.getStatus(id);
+        console.log('get code result ' + result)
         if (
           result.message == EActivationGetStatusAnswer.STATUS_OK ||
           result.message == EActivationGetStatusAnswer.STATUS_UNEXPECTED

@@ -34,6 +34,7 @@ export class getNumberV2 {
       this.query
         ?.makeCall(EApiActions.getNumber, options)
         .then((response) => {
+            console.log("Get number response " + response)
           if (typeof response == 'object') {
             return resolve(
               new SMSNumber({
