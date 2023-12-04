@@ -36,7 +36,7 @@ class waitForCode {
                             return resolve(result.data);
                         if (result.message != status_1.EActivationGetStatusAnswer.STATUS_WAIT_CODE)
                             return reject(result.code);
-                        yield (0, helpers_1.sleep)(1500);
+                        yield (0, helpers_1.sleep)(yield getRandomNumber());
                     }
                     reject('EXPIRED');
                 }
@@ -54,4 +54,21 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], waitForCode.prototype, "waitForCode", null);
+function getRandomNumber() {
+    return __awaiter(this, void 0, void 0, function* () {
+        // Define the lower and upper bounds
+        const lowerBound = 1500;
+        const upperBound = 5500;
+        // Calculate the midpoint
+        const midpoint = (lowerBound + upperBound) / 2;
+        // Calculate the range
+        const range = upperBound - lowerBound;
+        // Generate a random number with a triangular distribution
+        const u = Math.random();
+        const randomNumber = u < 0.5
+            ? lowerBound + Math.sqrt(u * range * (midpoint - lowerBound))
+            : upperBound - Math.sqrt((1 - u) * range * (upperBound - midpoint));
+        return Math.round(randomNumber); // Optional: Round to the nearest integer
+    });
+}
 //# sourceMappingURL=code.js.map
