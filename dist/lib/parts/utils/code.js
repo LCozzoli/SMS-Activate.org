@@ -34,7 +34,7 @@ class waitForCode {
                         if (result.message == status_1.EActivationGetStatusAnswer.STATUS_OK ||
                             result.message == status_1.EActivationGetStatusAnswer.STATUS_UNEXPECTED)
                             return resolve(result.data);
-                        if (result.message != status_1.EActivationGetStatusAnswer.STATUS_WAIT_CODE || result.code != '522')
+                        if (result.message != status_1.EActivationGetStatusAnswer.STATUS_WAIT_CODE && result.code != '522')
                             return reject(result.code);
                         yield (0, helpers_1.sleep)(yield getRandomNumber());
                     }
