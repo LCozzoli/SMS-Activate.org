@@ -21,7 +21,7 @@ export class waitForCode {
               result.message == EActivationGetStatusAnswer.STATUS_UNEXPECTED
           )
             return resolve(result.data);
-          if (result.message != EActivationGetStatusAnswer.STATUS_WAIT_CODE)
+          if (result.message != EActivationGetStatusAnswer.STATUS_WAIT_CODE || result.code != '522')
             return reject(result.code);
           await sleep(await getRandomNumber());
         }
