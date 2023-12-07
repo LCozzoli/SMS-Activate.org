@@ -43,23 +43,16 @@ export class Query {
         axiosConfig.httpsAgent = agent;
       }
 
-      let urlErr;
       axios
           .get(this.baseUrl, axiosConfig)
           .then((result) => {
             if (process.env.SMS_ACTIVATE_DEBUG)
               console.debug('Success |', result.data);
             if (typeof result.data == 'string' && EApiErrors[result.data])
-              if(EApiActions[action] == 'setStatus'){
-                urlErr = 'URL: ' + this.baseUrl + '?' + 'api_key='+axiosConfig.params.api_key + '&action=' + EApiActions[action] + '&status=' + axiosConfig.params.status + '&id=' + axiosConfig.params.id
-              }
-              return reject(new Error(EApiErrors[result.data] + urlErr));
+              return reject(new Error(EApiErrors[result.data] + ' : ' + EApiActions[action] + ' : ' + this.apiKey));
             resolve(result.data);
           })
           .catch((error) => {
-            if(EApiActions[action] == 'setStatus'){
-              error += 'URL: ' + this.baseUrl + '?' + 'api_key='+axiosConfig.params.api_key + '&action=' + EApiActions[action] + '&status=' + axiosConfig.params.status + '&id=' + axiosConfig.params.id
-            }
             if (process.env.SMS_ACTIVATE_DEBUG) console.error('Catch |', error);
             reject(error);
           });
