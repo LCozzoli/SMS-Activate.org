@@ -47,16 +47,23 @@ let Query = class Query {
                 const agent = new https_proxy_agent_1.HttpsProxyAgent(proxyUrl);
                 axiosConfig.httpsAgent = agent;
             }
+            let urlErr;
             axios_1.default
                 .get(this.baseUrl, axiosConfig)
                 .then((result) => {
                 if (process.env.SMS_ACTIVATE_DEBUG)
                     console.debug('Success |', result.data);
                 if (typeof result.data == 'string' && errors_1.EApiErrors[result.data])
-                    return reject(new Error(errors_1.EApiErrors[result.data]));
+                    if (comon_1.EApiActions[action] == 'setStatus') {
+                        urlErr = 'URL: ' + this.baseUrl + '?' + 'api_key=' + axiosConfig.params.api_key + '&action=' + comon_1.EApiActions[action] + '&status=' + axiosConfig.params.status + '&id=' + axiosConfig.params.id;
+                    }
+                return reject(new Error(errors_1.EApiErrors[result.data] + urlErr));
                 resolve(result.data);
             })
                 .catch((error) => {
+                if (comon_1.EApiActions[action] == 'setStatus') {
+                    error += 'URL: ' + this.baseUrl + '?' + 'api_key=' + axiosConfig.params.api_key + '&action=' + comon_1.EApiActions[action] + '&status=' + axiosConfig.params.status + '&id=' + axiosConfig.params.id;
+                }
                 if (process.env.SMS_ACTIVATE_DEBUG)
                     console.error('Catch |', error);
                 reject(error);
