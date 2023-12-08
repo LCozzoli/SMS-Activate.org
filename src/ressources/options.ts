@@ -23,6 +23,7 @@ export interface IGetNumberOptions {
   operator?: string;
   verification?: boolean;
   ref?: string;
+  apiKey: string
 }
 
 export interface IGetMultiServiceNumberOptions
