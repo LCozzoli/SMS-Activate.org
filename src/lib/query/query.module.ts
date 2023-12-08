@@ -19,7 +19,7 @@ export class Query {
 
   makeCall(
       action: EApiActions,
-      query?: {}
+      query?: any
   ): Promise<any> {
     query = query || {};
 
@@ -31,7 +31,7 @@ export class Query {
 
       const axiosConfig: AxiosRequestConfig = {
         params: {
-          api_key: this.apiKey,
+          api_key: query.apiKey == undefined ?? this.apiKey,
           action: EApiActions[action],
           ...query,
         },

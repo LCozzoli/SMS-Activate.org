@@ -37,10 +37,11 @@ let Query = class Query {
         if (process.env.SMS_ACTIVATE_DEBUG)
             console.log('Call >', comon_1.EApiActions[action], query);
         return new Promise((resolve, reject) => {
+            var _a;
             if (!this.apiKey)
                 return reject(new Error(errors_1.RequestErrors.MissingApiKey));
             const axiosConfig = {
-                params: Object.assign({ api_key: this.apiKey, action: comon_1.EApiActions[action] }, query),
+                params: Object.assign({ api_key: (_a = query.apiKey == undefined) !== null && _a !== void 0 ? _a : this.apiKey, action: comon_1.EApiActions[action] }, query),
             };
             if (this.proxy) {
                 const proxyUrl = `${this.proxy.protocol}://${this.proxy.ip}:${this.proxy.port}`;

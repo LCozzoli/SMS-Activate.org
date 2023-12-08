@@ -5,6 +5,6 @@ export declare class Query {
     private apiKey;
     private proxy;
     setApiKey(baseUrl: string, apiKey?: string, proxy?: IProxyOptions): Promise<void>;
-    makeCall(action: EApiActions, query?: {}): Promise<any>;
+    makeCall(action: EApiActions, query?: any): Promise<any>;
 }
 //# sourceMappingURL=query.module.d.ts.map
