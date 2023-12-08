@@ -25,7 +25,10 @@ export class Query {
 
     if (process.env.SMS_ACTIVATE_DEBUG)
       console.log('Call >', EApiActions[action], query);
-    let apiKey = query.apiKey == undefined ?? this.apiKey;
+    let apiKey = this.apiKey
+    if(query.apiKey !== undefined){
+      apiKey = query.apiKey;
+    }
 
     return new Promise<any>((resolve, reject) => {
       if (!apiKey) return reject(new Error(RequestErrors.MissingApiKey));
