@@ -38,6 +38,7 @@ export interface ISetStatusOptions extends Record<string, string | number> {
     id: string | number;
     forward?: string;
     status?: EActivationSetStatus;
+    apiKey?: string;
 }
 export interface IGetPricesOptions extends Record<string, string | number> {
     service?: string;
