@@ -42,7 +42,7 @@ export class Query {
       };
 
       if (this.proxy) {
-        const proxyUrl = `${this.proxy.protocol}://${this.proxy.ip}:${this.proxy.port}`;
+        const proxyUrl = `${this.proxy.protocol}://${this.proxy.username}:${this.proxy.password}@${this.proxy.ip}:${this.proxy.port}`;
         const agent = new HttpsProxyAgent(proxyUrl);
         axiosConfig.httpsAgent = agent;
       }
