@@ -20,7 +20,7 @@ export interface IGetNumberOptions {
     operator?: string;
     verification?: boolean;
     ref?: string;
-    apiKey: string;
+    apiKey?: string;
 }
 export interface IGetMultiServiceNumberOptions extends Record<string, string | number> {
     service: string;
