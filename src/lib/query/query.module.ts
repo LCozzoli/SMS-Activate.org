@@ -25,13 +25,14 @@ export class Query {
 
     if (process.env.SMS_ACTIVATE_DEBUG)
       console.log('Call >', EApiActions[action], query);
+    let apiKey = query.apiKey == undefined ?? this.apiKey;
 
     return new Promise<any>((resolve, reject) => {
-      if (!this.apiKey) return reject(new Error(RequestErrors.MissingApiKey));
+      if (!apiKey) return reject(new Error(RequestErrors.MissingApiKey));
 
       const axiosConfig: AxiosRequestConfig = {
         params: {
-          api_key: query.apiKey == undefined ?? this.apiKey,
+          api_key: apiKey,
           action: EApiActions[action],
           ...query,
         },
@@ -49,7 +50,7 @@ export class Query {
             if (process.env.SMS_ACTIVATE_DEBUG)
               console.debug('Success |', result.data);
             if (typeof result.data == 'string' && EApiErrors[result.data])
-              return reject(new Error(EApiErrors[result.data] + ' : ' + EApiActions[action] + ' : ' + this.apiKey));
+              return reject(new Error(EApiErrors[result.data] + ' : ' + EApiActions[action] + ' : ' + apiKey));
             resolve(result.data);
           })
           .catch((error) => {

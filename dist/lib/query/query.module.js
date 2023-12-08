@@ -33,15 +33,16 @@ let Query = class Query {
         });
     }
     makeCall(action, query) {
+        var _a;
         query = query || {};
         if (process.env.SMS_ACTIVATE_DEBUG)
             console.log('Call >', comon_1.EApiActions[action], query);
+        let apiKey = (_a = query.apiKey == undefined) !== null && _a !== void 0 ? _a : this.apiKey;
         return new Promise((resolve, reject) => {
-            var _a;
-            if (!this.apiKey)
+            if (!apiKey)
                 return reject(new Error(errors_1.RequestErrors.MissingApiKey));
             const axiosConfig = {
-                params: Object.assign({ api_key: (_a = query.apiKey == undefined) !== null && _a !== void 0 ? _a : this.apiKey, action: comon_1.EApiActions[action] }, query),
+                params: Object.assign({ api_key: apiKey, action: comon_1.EApiActions[action] }, query),
             };
             if (this.proxy) {
                 const proxyUrl = `${this.proxy.protocol}://${this.proxy.ip}:${this.proxy.port}`;
@@ -54,7 +55,7 @@ let Query = class Query {
                 if (process.env.SMS_ACTIVATE_DEBUG)
                     console.debug('Success |', result.data);
                 if (typeof result.data == 'string' && errors_1.EApiErrors[result.data])
-                    return reject(new Error(errors_1.EApiErrors[result.data] + ' : ' + comon_1.EApiActions[action] + ' : ' + this.apiKey));
+                    return reject(new Error(errors_1.EApiErrors[result.data] + ' : ' + comon_1.EApiActions[action] + ' : ' + apiKey));
                 resolve(result.data);
             })
                 .catch((error) => {
