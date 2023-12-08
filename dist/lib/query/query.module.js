@@ -33,11 +33,13 @@ let Query = class Query {
         });
     }
     makeCall(action, query) {
-        var _a;
         query = query || {};
         if (process.env.SMS_ACTIVATE_DEBUG)
             console.log('Call >', comon_1.EApiActions[action], query);
-        let apiKey = (_a = query.apiKey == undefined) !== null && _a !== void 0 ? _a : this.apiKey;
+        let apiKey = this.apiKey;
+        if (query.apiKey !== undefined) {
+            apiKey = query.apiKey;
+        }
         return new Promise((resolve, reject) => {
             if (!apiKey)
                 return reject(new Error(errors_1.RequestErrors.MissingApiKey));
