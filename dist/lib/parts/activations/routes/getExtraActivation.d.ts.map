@@ -1,0 +1,1 @@
+{"version":3,"file":"getExtraActivation.d.ts","sourceRoot":"","sources":["../../../../../src/lib/parts/activations/routes/getExtraActivation.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,0BAA0B,EAAE,MAAM,gCAAgC,CAAC;AAC5E,OAAO,EAAE,KAAK,EAAE,MAAM,6BAA6B,CAAC;AAEpD,qBAAa,kBAAkB;IACtB,KAAK,CAAC,EAAE,KAAK,CAAC;IAEf,kBAAkB,CAAC,OAAO,EAAE,0BAA0B,GAAG,MAAM;CAoBtE"}
