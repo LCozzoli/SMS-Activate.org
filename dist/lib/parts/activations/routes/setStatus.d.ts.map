@@ -1,0 +1,1 @@
+{"version":3,"file":"setStatus.d.ts","sourceRoot":"","sources":["../../../../../src/lib/parts/activations/routes/setStatus.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,iBAAiB,EAAE,MAAM,gCAAgC,CAAC;AACnE,OAAO,EAEL,eAAe,EAChB,MAAM,+BAA+B,CAAC;AACvC,OAAO,EAAE,KAAK,EAAE,MAAM,6BAA6B,CAAC;AAEpD,qBAAa,SAAS;IACb,KAAK,CAAC,EAAE,KAAK,CAAC;IAEf,SAAS,CAAC,OAAO,EAAE,iBAAiB;CAe3C"}

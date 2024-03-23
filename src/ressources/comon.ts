@@ -1,4 +1,4 @@
-export const BASE_URL = `http://api.sms-activate.org/stubs/handler_api.php`;
+export const BASE_URL = `https://api.sms-activate.org/stubs/handler_api.php`;
 
 export enum EApiActions {
   // Activations API
